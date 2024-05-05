@@ -24,6 +24,7 @@ func _ready():
 	spawnpoint = get_position()
 	
 #Delta pidr
+#mat' ebal
 func _process(delta):
 	%White_BG.position = $Camera2D.get_screen_center_position() + Vector2(640, -360)
 	%Black_BG.position = $Camera2D.get_screen_center_position() + Vector2(640, -360)
