@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/White_BG.gd" id="2_h6gvm"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/Ellipse 1.svg" id="2_najiq"]
 [ext_resource type="Texture2D" uid="uid://c2qt44jrcuom8" path="res://Assets/Ellipse 2.svg" id="3_qggny"]
-[ext_resource type="PackedScene" uid="uid://c052ldsxyylee" path="res://Objects/Enitities/player.tscn" id="3_t0f2e"]
+[ext_resource type="PackedScene" uid="uid://c052ldsxyylee" path="res://Objects/Enitities/Player.tscn" id="3_t0f2e"]
 [ext_resource type="Script" path="res://Scripts/Black_BG.gd" id="4_cxaqx"]
 [ext_resource type="Script" path="res://Scripts/Death_Zone.gd" id="6_gb857"]
 
@@ -188,6 +188,7 @@ scale = Vector2(5, 5)
 
 [node name="White" parent="." instance=ExtResource("2_bms3y")]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 z_index = 3
 scale = Vector2(5, 5)
 

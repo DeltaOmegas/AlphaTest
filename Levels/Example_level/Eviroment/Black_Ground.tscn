@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://hr5behsctvao"]
+[gd_scene load_steps=5 format=3 uid="uid://hr5behsctvao"]
 
 [ext_resource type="Texture2D" uid="uid://b1ng8x4aqxrdw" path="res://Assets/dark_tilemap.png" id="1_h25ud"]
+[ext_resource type="PackedScene" uid="uid://ckt5lqa6ly4im" path="res://Objects/Eniroment/black_checkpoint.tscn" id="2_lrc6a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mbbp"]
 texture = ExtResource("1_h25ud")
@@ -1122,3 +1123,5 @@ sources/0 = SubResource("TileSetAtlasSource_7mbbp")
 tile_set = SubResource("TileSet_gcwbg")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 655360, 5, 1, 720896, 5, 2, 720896, 5, 3, 720896, 5, 4, 720896, 5, 5, 720896, 5, 6, 720896, 5, 7, 720896, 5, 8, 720896, 5, 9, 720896, 5, 10, 786432, 5, 65536, 655360, 6, 131072, 655360, 6, 196608, 655360, 6, 262144, 655360, 7, 262145, 720896, 7, 262146, 720896, 7, 262147, 720896, 7, 262148, 720896, 7, 262149, 720896, 7, 262150, 720896, 7, 262151, 720896, 7, 262152, 720896, 7, 262153, 720896, 7, 262154, 786432, 7, 65546, 786432, 6, 131082, 786432, 6, 196618, 786432, 6)
+
+[node name="Black_Checkpoint" parent="." instance=ExtResource("2_lrc6a")]
