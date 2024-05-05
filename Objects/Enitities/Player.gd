@@ -27,7 +27,7 @@ func _ready():
 func _process(delta):
 	%White_BG.position = $Camera2D.get_screen_center_position() + Vector2(640, -360)
 	%Black_BG.position = $Camera2D.get_screen_center_position() + Vector2(640, -360)
-	if Input.is_action_just_pressed("switch_color") and (%Black_BG.scale[0]>=1 or %White_BG.scale[0] >= 1) and (not(%Black_BG.visible) or not(%White_BG.visible)):
+	if Input.is_action_just_pressed("switch_color") and (not(%Black_BG.visible) or not(%White_BG.visible)):
 		curent_color = not(curent_color)
 
 	if Input.is_action_just_pressed("highlight") and not($AnimationPlayer2.is_playing()):
