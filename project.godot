@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="PreAlphaTest"
-run/main_scene="res://Levels/Example_level/example_level.tscn"
+config/name="AlphaTest"
+run/main_scene="res://Levels/Test_level/test_level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -54,6 +54,8 @@ highlight={
 
 2d_physics/layer_1="White"
 2d_physics/layer_2="Black"
+2d_physics/layer_3="Player_White"
+2d_physics/layer_4="Player_Black"
 
 [rendering]
 
