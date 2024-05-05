@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://devysachcnue7"]
 
-[ext_resource type="TileSet" uid="uid://cstqvylrdifso" path="res://Assets/White_Tilemap.tres" id="1_v44ax"]
+[ext_resource type="TileSet" uid="uid://c8ba6boispnh1" path="res://Assets/Light_Tileset.tres" id="1_v44ax"]
 
 [node name="White_Ground" type="Node2D"]
 

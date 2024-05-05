@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/Ellipse 1.svg" id="1_tskm7"]
 [ext_resource type="Texture2D" uid="uid://c2qt44jrcuom8" path="res://Assets/Ellipse 2.svg" id="2_eo5e8"]
-[ext_resource type="PackedScene" uid="uid://c052ldsxyylee" path="res://Objects/Enitities/Player.tscn" id="3_tfysp"]
-[ext_resource type="PackedScene" uid="uid://dcgiqmdc3cw4e" path="res://Objects/Eniroment/Black_Ground.tscn" id="4_codbc"]
-[ext_resource type="PackedScene" uid="uid://devysachcnue7" path="res://Objects/Eniroment/White_Ground.tscn" id="5_rvf56"]
+[ext_resource type="PackedScene" uid="uid://c052ldsxyylee" path="res://Objects/Enitities/player.tscn" id="3_tfysp"]
+[ext_resource type="PackedScene" uid="uid://dcgiqmdc3cw4e" path="res://Levels/Test_level/Enviroment/black_ground.tscn" id="4_codbc"]
+[ext_resource type="PackedScene" uid="uid://devysachcnue7" path="res://Levels/Test_level/Enviroment/white_ground.tscn" id="5_rvf56"]
 [ext_resource type="Script" path="res://Levels/Area2D.gd" id="6_cupwe"]
 
 [sub_resource type="Animation" id="Animation_ax825"]
