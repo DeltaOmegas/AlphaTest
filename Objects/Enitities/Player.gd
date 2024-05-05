@@ -22,6 +22,7 @@ func to_Black(delta):
 
 func _ready():
 	spawnpoint.append(get_position())
+	print(spawnpoint)
 	
 func _process(delta):
 	%White_BG.position = $Camera2D.get_screen_center_position() + Vector2(640, -360)
@@ -72,8 +73,6 @@ func _process(delta):
 func death() -> void:
 	position = spawnpoint[-1]
 	velocity = Vector2(0, 0)
-
-#important change
 
 func _physics_process(delta):
 	if not is_on_floor():
