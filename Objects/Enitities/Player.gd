@@ -74,11 +74,7 @@ func death() -> void:
 	position = spawnpoint[-1]
 	velocity = Vector2(0, 0)
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 40be4ed24eb6598a756d00169e7249df9a914fbd
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
