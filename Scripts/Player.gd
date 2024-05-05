@@ -4,7 +4,6 @@ extends CharacterBody2D
 #128, -72
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
-const CHANGE_SPEED = 70
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -12,21 +11,8 @@ var curent_color: bool = false
 
 var spawnpoint: Array[Vector2] = []
 
-func to_White(delta):
-	%White_BG.scale = Vector2(%White_BG.scale[0]*CHANGE_SPEED*delta, %White_BG.scale[0]*CHANGE_SPEED*delta)
 
-
-func to_Black(delta):
-	%Black_BG.scale = Vector2(%Black_BG.scale[0]*CHANGE_SPEED*delta, %Black_BG.scale[0]*CHANGE_SPEED*delta)
-
-
-func _ready():
-	spawnpoint.append(get_position())
-	print(spawnpoint)
-	
 func _process(delta):
-	%White_BG.position = $Camera2D.get_screen_center_position() + Vector2(640, -360)
-	%Black_BG.position = $Camera2D.get_screen_center_position() + Vector2(640, -360)
 	if Input.is_action_just_pressed("switch_color") and (not(%Black_BG.visible) or not(%White_BG.visible)):
 		curent_color = not(curent_color)
 
@@ -45,13 +31,11 @@ func _process(delta):
 	if curent_color and %White_BG.scale[0] < 1.7:
 		%Black_BG.set_z_index(0)
 		%White_BG.set_z_index(1)
-		%White_BG.visible = true
-		to_White(delta)
+		%White_BG.turn_White(delta)
 	elif not(curent_color) and %Black_BG.scale[0] < 1.7:
 		%White_BG.set_z_index(0)
 		%Black_BG.set_z_index(1)
-		%Black_BG.visible = true
-		to_Black(delta)
+		%Black_BG.turn_Black(delta)
 	elif not(curent_color) and %Black_BG.scale[0] >= 1.7:
 		%White_BG.scale = Vector2(0.01, 0.01)
 		%White_BG.visible = false
@@ -70,9 +54,14 @@ func _process(delta):
 		set_collision_mask_value(2, true) #1-white 2-black
 
 
-func death() -> void:
+func death():
 	position = spawnpoint[-1]
 	velocity = Vector2(0, 0)
+
+
+func Checkpoint():
+	spawnpoint.append(get_position())
+	print("Checkpoint reached")
 
 
 func _physics_process(delta):
@@ -81,8 +70,6 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		set_collision_mask_value(1, not(get_collision_mask_value(1)))
-		set_collision_mask_value(2, not(get_collision_mask_value(2)))
 		
 	var direction = Input.get_axis("left", "right")
 	if direction:
