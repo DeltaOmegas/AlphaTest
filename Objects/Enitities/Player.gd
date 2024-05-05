@@ -74,7 +74,7 @@ func death() -> void:
 	position = spawnpoint
 	velocity = Vector2(0, 0)
 
-
+#important change
 
 func _physics_process(delta):
 	if not is_on_floor():
