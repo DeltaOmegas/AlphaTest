@@ -54,6 +54,7 @@ func _process(_delta):
 			$Highlights.play("Blackhole")
 		else:
 			$Highlights.play("Flashlight")
+	print($Player.collision_mask, $Player.collision_layer)
 
 
 func _on_flashlight_timer_timeout():

@@ -154,7 +154,7 @@ _data = {
 [sub_resource type="Animation" id="Animation_lw2ti"]
 resource_name = "to_Black"
 length = 0.75
-step = 0.5
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -495,7 +495,7 @@ scale = Vector2(5, 5)
 z_index = 4
 position = Vector2(373, -118)
 scale = Vector2(5, 5)
-collision_layer = 8
+collision_mask = 2
 platform_floor_layers = 4294967043
 
 [node name="Main_Camera" type="Camera2D" parent="Player"]
