@@ -10,8 +10,7 @@ extends CharacterBody2D
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var checkpoints: Array = [] # 2d array e.g [[Vector2(position), checkpoint_color(true/false)]]
-var spikes: Array = [] # Same as checkpoints
+var checkpoints: Array = [] # 2d array e.g [[Vector2(position), checkpoint_color(true/false)
 
 
 func respawn(): #Used in Death_Zone to respawn player
@@ -52,6 +51,10 @@ func _physics_process(delta):
 		
 	var direction = Input.get_axis("left", "right")
 	if direction:
+		if direction == -1:
+			$Sprite2D.set_flip_h(true)
+		else:
+			$Sprite2D.set_flip_h(false)
 		velocity.x = direction * speed
 	else:
 		velocity.x = 0
