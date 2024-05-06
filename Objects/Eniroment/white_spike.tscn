@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Spike_Area.gd" id="2_5uu8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ibve"]
-size = Vector2(16, 9)
+size = Vector2(18, 11)
 
 [node name="Black_Spike" type="Node2D"]
 
