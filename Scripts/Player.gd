@@ -31,7 +31,6 @@ func force_jump(data): #force player to jump by a third force
 	elif typeof(data) == 4:
 		if data == "spike":
 			velocity.y = spike_jump_height
-	
 
 
 func _ready():
