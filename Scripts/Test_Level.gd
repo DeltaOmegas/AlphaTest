@@ -10,6 +10,7 @@ func switch_color():
 		else:
 			$Colors.play("to_Black")
 
+
 func get_current_color():
 	return COLOR
 

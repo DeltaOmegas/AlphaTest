@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://yh22br7ajeko"]
+[gd_scene load_steps=4 format=3 uid="uid://bs6j2efi4a8tl"]
 
 [ext_resource type="TileSet" uid="uid://c8ba6boispnh1" path="res://Assets/Light_Tileset.tres" id="1_5c4m7"]
 [ext_resource type="Script" path="res://Scripts/Spike_Area.gd" id="2_5uu8t"]
