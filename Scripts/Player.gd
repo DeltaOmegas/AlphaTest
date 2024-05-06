@@ -15,7 +15,7 @@ func death():
 
 func Checkpoint(pos: Vector2):
 	spawnpoint.append(pos)
-	print("Checkpoint is reached")
+	print(pos)
 
 
 func _ready():

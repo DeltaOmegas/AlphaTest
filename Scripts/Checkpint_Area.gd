@@ -3,7 +3,7 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body is Player:
-		body.Checkpoint(position+Vector2(0, -1000))
+		body.Checkpoint($"..".global_position + Vector2(24*5, -24*5))
 		$"../Checkpoint_Animation".stop()
 		$"../Checkpoint_Animation".play("Reached")
 		
