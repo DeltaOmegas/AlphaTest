@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcgiqmdc3cw4e"]
+[gd_scene load_steps=7 format=3 uid="uid://dcgiqmdc3cw4e"]
 
 [ext_resource type="Texture2D" uid="uid://b1ng8x4aqxrdw" path="res://Assets/dark_tilemap.png" id="2_2mi45"]
 [ext_resource type="PackedScene" uid="uid://ckt5lqa6ly4im" path="res://Objects/Eniroment/black_checkpoint.tscn" id="2_irub3"]
 [ext_resource type="PackedScene" uid="uid://b8dyikw76rn8s" path="res://Objects/Eniroment/black_spike.tscn" id="3_3xpje"]
+[ext_resource type="PackedScene" uid="uid://bx2c4cyfcpsio" path="res://Objects/Enitities/Enemy_Black.tscn" id="4_q2hh0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mbbp"]
 texture = ExtResource("2_2mi45")
@@ -1139,3 +1140,6 @@ layer_0/tile_data = PackedInt32Array(0, 655360, 5, 1, 720896, 5, 2, 720896, 5, 3
 
 [node name="Black_Spike" parent="." instance=ExtResource("3_3xpje")]
 position = Vector2(187, 1)
+
+[node name="Enemy" parent="." instance=ExtResource("4_q2hh0")]
+position = Vector2(340, 0)

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed: int = 300
 @export var jump_height: int = 800
 
+
 #settings for forced jumps
 @export var spike_jump_height: int = 800
 
@@ -21,6 +22,7 @@ func respawn(): #Used in Death_Zone to respawn player
 func checkpoint(data: Array): #Used in Checkpoint_Area to add new checkpoint
 	if not (data in checkpoints): #Anti-garbage protection
 		checkpoints.append(data)
+
 
 func get_last_checkpoint_color(): #Used in Death_Zone to switch color if it is necessary
 	return checkpoints[-1][1]

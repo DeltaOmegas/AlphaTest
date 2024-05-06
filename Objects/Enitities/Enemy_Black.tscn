@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bx2c4cyfcpsio"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_o7jma"]
+[ext_resource type="Script" path="res://Scripts/Enemy_attack_zone.gd" id="2_rhmvd"]
+[ext_resource type="Script" path="res://Scripts/Defeat_Zone.gd" id="3_kq6k3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_g1chp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tl3uf"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4dec"]
+size = Vector2(21, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03c57"]
+size = Vector2(10, 5)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 18
+script = ExtResource("1_o7jma")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.603922, 0.313726, 1)
+position = Vector2(5, -5)
+scale = Vector2(10, 10)
+texture = SubResource("CanvasTexture_g1chp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -5)
+shape = SubResource("RectangleShape2D_tl3uf")
+
+[node name="Attack_Zone" type="Area2D" parent="."]
+position = Vector2(-7, 8)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_rhmvd")
+
+[node name="Attack_zone" type="CollisionShape2D" parent="Attack_Zone"]
+position = Vector2(9.5, -11.5)
+shape = SubResource("RectangleShape2D_s4dec")
+
+[node name="Defeat_Zone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_kq6k3")
+
+[node name="Defeat_zone" type="CollisionShape2D" parent="Defeat_Zone"]
+position = Vector2(5, -9.5)
+shape = SubResource("RectangleShape2D_03c57")
+
+[connection signal="body_entered" from="Attack_Zone" to="Attack_Zone" method="_on_body_entered"]
+[connection signal="body_entered" from="Defeat_Zone" to="Defeat_Zone" method="_on_body_entered"]
