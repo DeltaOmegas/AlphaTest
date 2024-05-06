@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var checkpoints: Array = [] # 2d array e.g [[Vector2(position), checkpoint_color(true/false)]]
+var spikes: Array = [] # Same as checkpoints
 
 
 func respawn(): #Used in Death_Zone to respawn player
@@ -14,8 +15,12 @@ func respawn(): #Used in Death_Zone to respawn player
 
 
 func checkpoint(data: Array): #Used in Checkpoint_Area to add new checkpoint
-	checkpoints.append(data)
-	
+	if not (data in checkpoints): #Anti-garbage protection
+		checkpoints.append(data)
+
+func spike(data: Array): #Same as checkpoint
+	if not (data in spikes): #Anti-garbage protection
+		spikes.append(data)
 
 func get_last_checkpoint_color(): #Used in Death_Zone to switch color if it is necessary
 	return checkpoints[-1][1]
