@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var COLOR: bool = false
-
+var allow_flashlight: bool = true
 
 func switch_color():
 		COLOR = not(COLOR)
@@ -47,8 +47,14 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("switch_color") and not(is_anything_playing):
 		switch_color()
-	if Input.is_action_just_pressed("highlight") and not(is_anything_playing):
+	if Input.is_action_just_pressed("highlight") and not(is_anything_playing) and allow_flashlight:
+		$Flashlight_timer.start()
+		allow_flashlight = false
 		if COLOR:
 			$Highlights.play("Blackhole")
 		else:
 			$Highlights.play("Flashlight")
+
+
+func _on_flashlight_timer_timeout():
+	allow_flashlight = true
