@@ -18,7 +18,9 @@ func _ready():
 	COLOR = bool(COLOR)
 	if COLOR:
 		$White.modulate[3] = 0
+		$White.z_index = 3
 		$Black.modulate[3] = 1
+		$Black.z_index = 4
 		%White_BG.scale = Vector2(1.7, 1.7)
 		%White_BG.visible = true
 		%Black_BG.scale = Vector2(0.01, 0.01)
@@ -27,7 +29,9 @@ func _ready():
 		$Player.set_collision_mask_value(2, true)
 	else:
 		$White.modulate[3] = 1
+		$White.z_index = 4
 		$Black.modulate[3] = 0
+		$Black.z_index = 3
 		%White_BG.scale = Vector2(0.01, 0.01)
 		%White_BG.visible = false
 		%Black_BG.scale = Vector2(1.7, 1.7)

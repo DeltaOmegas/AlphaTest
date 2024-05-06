@@ -8,22 +8,22 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var checkpoints: Array = [] # 2d array e.g [[Vector2(position), checkpoint_color(true/false)]]
 
 
-func death():
+func respawn(): #Used in Death_Zone to respawn player
 	position = checkpoints[-1][0]
-	velocity = Vector2(0, 0)
+	velocity = Vector2(0, 0) #Fix the "portal effect"
 
 
-func Checkpoint(data: Array):
+func checkpoint(data: Array): #Used in Checkpoint_Area to add new checkpoint
 	checkpoints.append(data)
 	
 
-func get_last_checkpoint_color():
+func get_last_checkpoint_color(): #Used in Death_Zone to switch color if it is necessary
 	return checkpoints[-1][1]
 
 
 func _ready():
 	jump_heigh *= -1
-	checkpoints.append([get_position(), not($"..".get_current_color())])
+	checkpoints.append([get_position(), not($"..".get_current_color())]) #Make a virtual checkpoint on start position
 	$Flashlight.visible = false
 	$Blackhole.visible = false
 
