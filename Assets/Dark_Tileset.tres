@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://deu2p62p6yqt0"]
 
-[ext_resource type="Texture2D" uid="uid://b1ng8x4aqxrdw" path="res://Assets/dark_tilemap.png" id="1_0b7o2"]
+[ext_resource type="Texture2D" uid="uid://jvr4g1tcspoj" path="res://Assets/dark_tilemap2.png" id="1_vf468"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mbbp"]
-texture = ExtResource("1_0b7o2")
+texture = ExtResource("1_vf468")
 separation = Vector2i(1, 1)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
