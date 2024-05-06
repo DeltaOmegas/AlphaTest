@@ -23,9 +23,7 @@ func checkpoint(data: Array): #Used in Checkpoint_Area to add new checkpoint
 		checkpoints.append(data)
 
 func spike(data: bool): #spike mechanics
-	print('spike func')
 	if $"..".get_current_color() != data:
-		print('call jump')
 		force_jump('spike')
 
 func get_last_checkpoint_color(): #Used in Death_Zone to switch color if it is necessary
@@ -33,8 +31,6 @@ func get_last_checkpoint_color(): #Used in Death_Zone to switch color if it is n
 
 func force_jump(nature:String): #force player to jump by a third force
 	spike_jump_height *= -1 #shitty coordinates fix
-	
-	print('jump func')
 	if nature == 'spike':
 		print('jump called')
 		velocity.y = spike_jump_height
