@@ -1,24 +1,89 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvqyl1hv6avac"]
+[gd_scene load_steps=9 format=3 uid="uid://dvqyl1hv6avac"]
 
 [ext_resource type="TileSet" uid="uid://c8ba6boispnh1" path="res://Assets/Light_Tileset.tres" id="1_0byi3"]
+[ext_resource type="Texture2D" uid="uid://m8hwti5ogu52" path="res://Assets/light_tilemap.png" id="1_2jpsk"]
 [ext_resource type="Script" path="res://Scripts/Checkpint_Area.gd" id="2_n1eqk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34n65"]
+atlas = ExtResource("1_2jpsk")
+region = Rect2(35, 86, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ut0c2"]
 size = Vector2(48, 48)
 
+[sub_resource type="Animation" id="Animation_woiat"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Checkpoint_Core:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(25, -39), Vector2(25, -42), Vector2(25, -39)]
+}
+
+[sub_resource type="Animation" id="Animation_fcpea"]
+resource_name = "Reached"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Checkpoint_Core:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(25, -39), Vector2(25, -500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Checkpoint_Core:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t3hq8"]
+_data = {
+"Idle": SubResource("Animation_woiat"),
+"Reached": SubResource("Animation_fcpea")
+}
+
 [node name="White_Checkpoint" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="Checkpoint_Core" type="Sprite2D" parent="."]
+position = Vector2(25, -39)
+texture = SubResource("AtlasTexture_34n65")
+
+[node name="Checkpoint_Base" type="TileMap" parent="."]
 tile_set = ExtResource("1_0byi3")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 0, 9, 1, 65536, 9, 2, 131072, 9, -131071, 65536, 10, -65535, 65536, 11, -196607, 131072, 5)
+layer_0/tile_data = PackedInt32Array(0, 0, 9, 1, 65536, 9, 2, 131072, 9, -131071, 65536, 10, -65535, 65536, 11)
 
 [node name="Checkpint_Area_White" type="Area2D" parent="."]
 collision_mask = 4
 script = ExtResource("2_n1eqk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpint_Area_White"]
+[node name="Checkpoint_Collision" type="CollisionShape2D" parent="Checkpint_Area_White"]
 position = Vector2(24, -22)
 shape = SubResource("RectangleShape2D_ut0c2")
+
+[node name="Checkpoint_Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t3hq8")
+}
 
 [connection signal="body_entered" from="Checkpint_Area_White" to="Checkpint_Area_White" method="_on_body_entered"]
