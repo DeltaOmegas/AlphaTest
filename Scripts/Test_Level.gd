@@ -1,6 +1,17 @@
 extends Node2D
 
-@export_enum("Black", "White") var COLOR: int = 0
+@export var COLOR: bool = false
+
+
+func switch_color():
+		COLOR = not(COLOR)
+		if COLOR:
+			$Colors.play("to_White")
+		else:
+			$Colors.play("to_Black")
+
+func get_current_color():
+	return COLOR
 
 
 func _ready():
@@ -30,11 +41,7 @@ func _process(_delta):
 	var is_anything_playing: bool = $Highlights.is_playing() or $Colors.is_playing()
 	
 	if Input.is_action_just_pressed("switch_color") and not(is_anything_playing):
-		COLOR = not(COLOR)
-		if COLOR:
-			$Colors.play("to_White")
-		else:
-			$Colors.play("to_Black")
+		switch_color()
 	if Input.is_action_just_pressed("highlight") and not(is_anything_playing):
 		if COLOR:
 			$Highlights.play("Blackhole")
