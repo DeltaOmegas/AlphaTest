@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed: int = 300
 @export var jump_height: int = 800
 
+
 #settings for forced jumps
 @export var spike_jump_height: int = 800
 
@@ -22,20 +23,21 @@ func checkpoint(data: Array): #Used in Checkpoint_Area to add new checkpoint
 	if not (data in checkpoints): #Anti-garbage protection
 		checkpoints.append(data)
 
+func spike(data: bool): #spike mechanics
+	if $"..".get_current_color() != data:
+		force_jump('spike')
+
 func get_last_checkpoint_color(): #Used in Death_Zone to switch color if it is necessary
 	return checkpoints[-1][1]
 
-func force_jump(data): #force player to jump by a third force
-	if typeof(data) == 2:
-		velocity.y = data
-	elif typeof(data) == 4:
-		if data == "spike":
-			velocity.y = spike_jump_height
-	
+func force_jump(nature:String): #force player to jump by a third force
+	spike_jump_height *= -1 #shitty coordinates fix
+	if nature == 'spike':
+		print('jump called')
+		velocity.y = spike_jump_height
 
 
 func _ready():
-	spike_jump_height *= -1
 	jump_height *= -1
 	checkpoints.append([get_position(), not($"..".get_current_color())]) #Make a virtual checkpoint on start position
 	$Flashlight.visible = false
