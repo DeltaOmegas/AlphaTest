@@ -53,7 +53,6 @@ func _process(_delta):
 			$Highlights.play("Blackhole")
 		else:
 			$Highlights.play("Flashlight")
-	print($Flashlight_timer.get_time_left())
 
 
 func _on_flashlight_timer_timeout():
