@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://fhrk2owggphk"]
+[gd_scene load_steps=16 format=3 uid="uid://fhrk2owggphk"]
 
 [ext_resource type="Script" path="res://Scripts/Level_Script.gd" id="1_u1oeo"]
 [ext_resource type="Script" path="res://Scripts/White_BG.gd" id="2_h6gvm"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dvntyf61tvsb3" path="res://Assets/Blackhole.svg" id="10_tvbti"]
 [ext_resource type="AnimationLibrary" uid="uid://crwyyp0x1y5qv" path="res://Assets/Highlight_Animations.res" id="12_gl3yu"]
 [ext_resource type="AnimationLibrary" uid="uid://cto0ulikt5j1y" path="res://Assets/Colors_Animation.res" id="13_tap47"]
+[ext_resource type="PackedScene" uid="uid://cag1mrccxn3dr" path="res://Objects/UI/UI.tscn" id="14_angvh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sguj5"]
 size = Vector2(5632, 164)
@@ -107,6 +108,8 @@ libraries = {
 [node name="Flashlight_timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="Ui" parent="." instance=ExtResource("14_angvh")]
 
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]
 [connection signal="timeout" from="Flashlight_timer" to="." method="_on_flashlight_timer_timeout"]
