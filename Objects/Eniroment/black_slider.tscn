@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://bapjp6ajuipwy"]
+
+[ext_resource type="Texture2D" uid="uid://jvr4g1tcspoj" path="res://Assets/dark_tilemap2.png" id="1_2mrff"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f130n"]
+atlas = ExtResource("1_2mrff")
+region = Rect2(68, 102, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkuun"]
+atlas = ExtResource("1_2mrff")
+region = Rect2(85, 102, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m1pg"]
+atlas = ExtResource("1_2mrff")
+region = Rect2(102, 102, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33oc4"]
+atlas = ExtResource("1_2mrff")
+region = Rect2(153, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mv52"]
+atlas = ExtResource("1_2mrff")
+region = Rect2(136, 0, 16, 16)
+
+[sub_resource type="Animation" id="Animation_cc8kv"]
+resource_name = "Slide"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(80, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b3wch"]
+_data = {
+"Slide": SubResource("Animation_cc8kv")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ysg2"]
+size = Vector2(48, 16)
+
+[node name="Black_Slider" type="Node2D"]
+
+[node name="Slider_Background" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.666667)
+position = Vector2(19, -10)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Slider_Background"]
+position = Vector2(-11, 0)
+texture = SubResource("AtlasTexture_f130n")
+flip_v = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Slider_Background/Sprite2D2"]
+position = Vector2(16, 0)
+texture = SubResource("AtlasTexture_lkuun")
+flip_v = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Slider_Background/Sprite2D2/Sprite2D"]
+position = Vector2(32, 0)
+texture = SubResource("AtlasTexture_lkuun")
+flip_v = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Slider_Background/Sprite2D2/Sprite2D/Sprite2D2"]
+position = Vector2(-16, 0)
+texture = SubResource("AtlasTexture_lkuun")
+flip_v = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Slider_Background/Sprite2D2/Sprite2D/Sprite2D2/Sprite2D2"]
+position = Vector2(32, 0)
+texture = SubResource("AtlasTexture_lkuun")
+flip_v = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Slider_Background/Sprite2D2/Sprite2D/Sprite2D2/Sprite2D2/Sprite2D2"]
+position = Vector2(16, 0)
+texture = SubResource("AtlasTexture_5m1pg")
+flip_v = true
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(80, 0)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Slider_Platform" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(24, -8)
+texture = SubResource("AtlasTexture_33oc4")
+
+[node name="Slider_Platform2" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(-8, -8)
+texture = SubResource("AtlasTexture_33oc4")
+
+[node name="Slider_Platform3" type="Sprite2D" parent="AnimatableBody2D"]
+position = Vector2(8, -8)
+texture = SubResource("AtlasTexture_4mv52")
+
+[node name="Slider_Animation" type="AnimationPlayer" parent="AnimatableBody2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_b3wch")
+}
+autoplay = "Slide"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_6ysg2")
