@@ -5,16 +5,12 @@ var hold: Array = [false, 0]
 
 @export var base_velocity: int = -100
 
-func _ready():
-	pass
 
 
 
-func _process(delta):
-	pass
-	
 
-func _physics_process(delta):
+
+func _physics_process(_delta):
 	
 	#if hold[0]: #ignore is_on_wall() for 5 ticks so enemy wouldnt flicker
 	#	if hold[1] < 6:

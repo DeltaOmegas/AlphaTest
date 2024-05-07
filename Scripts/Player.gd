@@ -42,7 +42,7 @@ func _ready():
 	$Blackhole.visible = false
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("down") and is_on_elevator != null:
 		is_on_elevator.elevator_down()
 	if Input.is_action_just_pressed("up") and is_on_elevator != null:
