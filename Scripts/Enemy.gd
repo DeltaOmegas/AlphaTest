@@ -24,10 +24,8 @@ func _physics_process(delta):
 	#not requred anymore, but just in case
 	
 	if is_on_wall(): #and not hold[0]:
-		print('collision')
 		base_velocity *= -1
 		hold = [true, 0]
-		
 	velocity.x = base_velocity
 	move_and_slide()
 	
