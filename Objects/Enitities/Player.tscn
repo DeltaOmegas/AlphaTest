@@ -111,7 +111,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 16384
 collision_mask = 2
 script = ExtResource("1_onsls")
 
@@ -120,7 +120,6 @@ texture = ExtResource("2_llhbx")
 hframes = 27
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_m4stb")
 one_way_collision_margin = 0.9

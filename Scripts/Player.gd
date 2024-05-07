@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var checkpoints: Array = [] # 2d array e.g [[Vector2(position), checkpoint_color(true/false)
-
+var is_on_elevator = null
 
 func respawn(): #Used in Death_Zone to respawn player
 	position = checkpoints[-1][0]
@@ -40,6 +40,13 @@ func _ready():
 	checkpoints.append([get_position(), not($"..".get_current_color())]) #Make a virtual checkpoint on start position
 	$Flashlight.visible = false
 	$Blackhole.visible = false
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("down") and is_on_elevator != null:
+		is_on_elevator.elevator_down()
+	if Input.is_action_just_pressed("up") and is_on_elevator != null:
+		is_on_elevator.elevator_up()
 
 
 func _physics_process(delta):
