@@ -9,7 +9,7 @@ atlas = ExtResource("1_2jpsk")
 region = Rect2(35, 86, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ut0c2"]
-size = Vector2(48, 48)
+size = Vector2(48, 46)
 
 [sub_resource type="Animation" id="Animation_woiat"]
 resource_name = "Idle"
@@ -71,14 +71,14 @@ texture = SubResource("AtlasTexture_34n65")
 [node name="Checkpoint_Base" type="TileMap" parent="."]
 tile_set = ExtResource("1_0byi3")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 0, 9, 1, 65536, 9, 2, 131072, 9, -131071, 65536, 10, -65535, 65536, 11)
+layer_0/tile_data = PackedInt32Array(-131071, 65536, 10, -65535, 65536, 11)
 
 [node name="Checkpint_Area_White" type="Area2D" parent="."]
 collision_mask = 4
 script = ExtResource("2_n1eqk")
 
 [node name="Checkpoint_Collision" type="CollisionShape2D" parent="Checkpint_Area_White"]
-position = Vector2(24, -22)
+position = Vector2(24, -23)
 shape = SubResource("RectangleShape2D_ut0c2")
 
 [node name="Checkpoint_Animation" type="AnimationPlayer" parent="."]
