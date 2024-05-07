@@ -54,6 +54,10 @@ func _process(_delta):
 			$Highlights.play("Blackhole")
 		else:
 			$Highlights.play("Flashlight")
+	if not allow_flashlight:
+		$Ui.update_timer(str(round($Flashlight_timer.get_time_left())))
+	else:
+		$Ui.update_timer('Flashlight is availible')
 
 
 func _on_flashlight_timer_timeout():

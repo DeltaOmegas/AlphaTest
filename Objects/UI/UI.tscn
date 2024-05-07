@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cag1mrccxn3dr"]
+
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="1_785vw"]
+
+[node name="Ui" type="CanvasLayer"]
+script = ExtResource("1_785vw")
+
+[node name="Flashlight_Timer" type="Label" parent="."]
+offset_left = 34.0
+offset_top = 659.0
+offset_right = 242.0
+offset_bottom = 692.0
+text = "It shoul be a bullet counter"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://doy34ptnyi8uv"]
+[gd_scene load_steps=16 format=3 uid="uid://doy34ptnyi8uv"]
 
 [ext_resource type="PackedScene" uid="uid://dcgiqmdc3cw4e" path="res://Levels/Test_level/Enviroment/black_ground.tscn" id="1_qq486"]
 [ext_resource type="Script" path="res://Scripts/Level_Script.gd" id="1_u1oeo"]
@@ -6,13 +6,14 @@
 [ext_resource type="Script" path="res://Scripts/White_BG.gd" id="2_h6gvm"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/Ellipse 1.svg" id="2_najiq"]
 [ext_resource type="Texture2D" uid="uid://c2qt44jrcuom8" path="res://Assets/Ellipse 2.svg" id="3_qggny"]
-[ext_resource type="PackedScene" uid="uid://c052ldsxyylee" path="res://Objects/Enitities/player.tscn" id="3_t0f2e"]
+[ext_resource type="PackedScene" uid="uid://c052ldsxyylee" path="res://Objects/Enitities/Player.tscn" id="3_t0f2e"]
 [ext_resource type="Script" path="res://Scripts/Black_BG.gd" id="4_cxaqx"]
 [ext_resource type="Script" path="res://Scripts/Death_Zone.gd" id="6_gb857"]
 [ext_resource type="Texture2D" uid="uid://ch81x5h5pkws7" path="res://Assets/Flashlight.svg" id="9_ibfnn"]
 [ext_resource type="Texture2D" uid="uid://dvntyf61tvsb3" path="res://Assets/Blackhole.svg" id="10_tvbti"]
 [ext_resource type="AnimationLibrary" uid="uid://crwyyp0x1y5qv" path="res://Assets/Highlight_Animations.res" id="12_m1frh"]
 [ext_resource type="AnimationLibrary" uid="uid://cto0ulikt5j1y" path="res://Assets/Colors_Animation.res" id="13_ifb45"]
+[ext_resource type="PackedScene" uid="uid://cag1mrccxn3dr" path="res://Objects/UI/UI.tscn" id="14_0vhrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sguj5"]
 size = Vector2(5632, 164)
@@ -23,10 +24,9 @@ script = ExtResource("1_u1oeo")
 [node name="White_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 show_behind_parent = true
-z_index = 1
 texture_filter = 2
 position = Vector2(1013, -478)
-scale = Vector2(0.01, 0.01)
+scale = Vector2(1.7, 1.7)
 texture = ExtResource("2_najiq")
 region_rect = Rect2(1607.5, 755.035, 312.497, 324.965)
 script = ExtResource("2_h6gvm")
@@ -34,23 +34,24 @@ script = ExtResource("2_h6gvm")
 [node name="Black_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 show_behind_parent = true
+z_index = 1
 texture_filter = 2
 position = Vector2(1013, -478)
-scale = Vector2(1.7, 1.7)
+scale = Vector2(0.01, 0.01)
 texture = ExtResource("3_qggny")
 region_rect = Rect2(1607.5, 755.035, 312.497, 324.965)
 script = ExtResource("4_cxaqx")
 
 [node name="Black" parent="." instance=ExtResource("1_qq486")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
-z_index = 4
+z_index = 3
 position = Vector2(-469, 0)
 scale = Vector2(5, 5)
 
 [node name="White" parent="." instance=ExtResource("2_bms3y")]
 unique_name_in_owner = true
-z_index = 3
+modulate = Color(1, 1, 1, 0)
+z_index = 4
 scale = Vector2(5, 5)
 
 [node name="Player" parent="." instance=ExtResource("3_t0f2e")]
@@ -106,6 +107,8 @@ libraries = {
 [node name="Flashlight_timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="Ui" parent="." instance=ExtResource("14_0vhrk")]
 
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]
 [connection signal="timeout" from="Flashlight_timer" to="." method="_on_flashlight_timer_timeout"]
