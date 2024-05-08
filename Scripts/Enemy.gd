@@ -29,6 +29,7 @@ func _physics_process(_delta):
 func death():
 	dead = true
 	$".".visible = false #add death animations
-	$Attack_Zone.collision_mask = 0
+	$Attack_Zone_Left.collision_mask = 0
+	$Attack_Zone_Right.collision_mask = 0
 	$Defeat_Zone.collision_mask = 0
 	$".".collision_layer = 0

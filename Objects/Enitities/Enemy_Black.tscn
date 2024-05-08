@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx2c4cyfcpsio"]
+[gd_scene load_steps=9 format=3 uid="uid://bx2c4cyfcpsio"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_o7jma"]
 [ext_resource type="Script" path="res://Scripts/Enemy_attack_zone.gd" id="2_rhmvd"]
@@ -10,10 +10,13 @@
 size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4dec"]
-size = Vector2(21, 7)
+size = Vector2(11.4609, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm1nw"]
+size = Vector2(11, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03c57"]
-size = Vector2(10, 5)
+size = Vector2(6, 5)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -30,15 +33,25 @@ texture = SubResource("CanvasTexture_g1chp")
 position = Vector2(5, -5)
 shape = SubResource("RectangleShape2D_tl3uf")
 
-[node name="Attack_Zone" type="Area2D" parent="."]
+[node name="Attack_Zone_Left" type="Area2D" parent="."]
 position = Vector2(-7, 8)
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("2_rhmvd")
 
-[node name="Attack_zone" type="CollisionShape2D" parent="Attack_Zone"]
-position = Vector2(9.5, -11.5)
+[node name="Attack_zone" type="CollisionShape2D" parent="Attack_Zone_Left"]
+position = Vector2(6.26953, -11.5)
 shape = SubResource("RectangleShape2D_s4dec")
+
+[node name="Attack_Zone_Right" type="Area2D" parent="."]
+position = Vector2(-7, 8)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_rhmvd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Zone_Right"]
+position = Vector2(17.5, -11.5)
+shape = SubResource("RectangleShape2D_nm1nw")
 
 [node name="Defeat_Zone" type="Area2D" parent="."]
 collision_layer = 0
@@ -49,5 +62,6 @@ script = ExtResource("3_kq6k3")
 position = Vector2(5, -9.5)
 shape = SubResource("RectangleShape2D_03c57")
 
-[connection signal="body_entered" from="Attack_Zone" to="Attack_Zone" method="_on_body_entered"]
+[connection signal="body_entered" from="Attack_Zone_Left" to="Attack_Zone_Left" method="_on_body_entered"]
+[connection signal="body_entered" from="Attack_Zone_Right" to="Attack_Zone_Right" method="_on_body_entered"]
 [connection signal="body_entered" from="Defeat_Zone" to="Defeat_Zone" method="_on_body_entered"]

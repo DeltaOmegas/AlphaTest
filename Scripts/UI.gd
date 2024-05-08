@@ -9,5 +9,5 @@ func update_timer(time:String):
 	$Flashlight_Timer.set_text(time)
 	
 func update_health(health: int):
-	$Health_indicator.set_text(health)
+	$Health_indicator.set_text(str(health))
 	

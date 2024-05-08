@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj76rwtmwysk1"]
+[gd_scene load_steps=9 format=3 uid="uid://dj76rwtmwysk1"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_4fatx"]
 [ext_resource type="Script" path="res://Scripts/Enemy_attack_zone.gd" id="2_ccuav"]
@@ -9,11 +9,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tl3uf"]
 size = Vector2(10, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4dec"]
-size = Vector2(16, 7)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03c57"]
 size = Vector2(10, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tdny"]
+size = Vector2(11.4609, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gounr"]
+size = Vector2(11, 7)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_mask = 17
@@ -29,16 +32,6 @@ texture = SubResource("CanvasTexture_g1chp")
 position = Vector2(5, -5)
 shape = SubResource("RectangleShape2D_tl3uf")
 
-[node name="Attack_Zone" type="Area2D" parent="."]
-position = Vector2(-7, 8)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("2_ccuav")
-
-[node name="Attack_zone" type="CollisionShape2D" parent="Attack_Zone"]
-position = Vector2(12, -11.5)
-shape = SubResource("RectangleShape2D_s4dec")
-
 [node name="Defeat_Zone" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
@@ -48,5 +41,26 @@ script = ExtResource("3_ud0vp")
 position = Vector2(5, -9.5)
 shape = SubResource("RectangleShape2D_03c57")
 
-[connection signal="body_entered" from="Attack_Zone" to="Attack_Zone" method="_on_body_entered"]
+[node name="Attack_Zone_Left" type="Area2D" parent="."]
+position = Vector2(-7, 8)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_ccuav")
+
+[node name="Attack_zone" type="CollisionShape2D" parent="Attack_Zone_Left"]
+position = Vector2(6.26953, -11.5)
+shape = SubResource("RectangleShape2D_7tdny")
+
+[node name="Attack_Zone_Right" type="Area2D" parent="."]
+position = Vector2(-7, 8)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_ccuav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Zone_Right"]
+position = Vector2(17.5, -11.5)
+shape = SubResource("RectangleShape2D_gounr")
+
 [connection signal="body_entered" from="Defeat_Zone" to="Defeat_Zone" method="_on_body_entered"]
+[connection signal="body_entered" from="Attack_Zone_Left" to="Attack_Zone_Left" method="_on_body_entered"]
+[connection signal="body_entered" from="Attack_Zone_Right" to="Attack_Zone_Right" method="_on_body_entered"]

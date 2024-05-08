@@ -5,18 +5,22 @@ extends CharacterBody2D
 @export var jump_height: int = 800
 
 
-#settings for forced jumps
-@export var spike_jump_height: int = 800
 
 
+var health: int = 8
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var checkpoints: Array = [] # 2d array e.g [[Vector2(position), checkpoint_color(true/false)
 var is_on_elevator = null
+var forcepushed: Array = [0,0,false] #[reqd speed, iterator, is turned on]
 
 func respawn(): #Used in Death_Zone to respawn player
 	position = checkpoints[-1][0]
 	velocity = Vector2(0, 0) #Fix the "portal effect"
+	health = 8
+	%Ui.update_health(health)
 
+func death():
+	respawn()#put death menus and animations here
 
 func checkpoint(data: Array): #Used in Checkpoint_Area to add new checkpoint
 	if not (data in checkpoints): #Anti-garbage protection
@@ -31,15 +35,37 @@ func force_jump(data): #force player to jump by a third force
 		velocity.y = data
 	elif typeof(data) == 4:
 		if data == "spike":
-			velocity.y = spike_jump_height
+			velocity.y = -700
+		elif data == 'enemy hit x-':
+			forcepushed = [-500,10,true]
+			velocity = Vector2(-500, -500)
+		elif data == 'enemy hit x+':
+			forcepushed = [500,10,true]
+			velocity = Vector2(500, -500)
+		
 
+func set_hp(desired_health: int):#set hp for things like healing poisions
+	if desired_health == 0:
+		health = desired_health
+		%Ui.update_health(health)
+		death()
+		return
+	health = desired_health
+	%Ui.update_health(health)
+
+func damage_by(damage: int):#damage from spikes and enemies
+	if damage >= health:
+		set_hp(0)
+		return
+	health -= damage
+	%Ui.update_health(health)
 
 func _ready():
-	spike_jump_height *= -1
 	jump_height *= -1
 	checkpoints.append([get_position(), not($"..".get_current_color())]) #Make a virtual checkpoint on start position
 	$Flashlight.visible = false
 	$Blackhole.visible = false
+	%Ui.update_health(health)
 
 
 func _process(_delta):
@@ -50,19 +76,32 @@ func _process(_delta):
 
 
 func _physics_process(delta):
+	print(velocity)
+	print(forcepushed)
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	elif not forcepushed[1]:
+		forcepushed = [0,0, false]
+		
+	if not forcepushed[1]:
+		print('clearing forcepushed')
+		forcepushed[0] = 0
+	else:
+		forcepushed[1] -= 1
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_height
 		
 	var direction = Input.get_axis("left", "right")
-	if direction:
+	if direction and not forcepushed[2]:
 		if direction == -1:
 			$Sprite2D.set_flip_h(true)
 		else:
 			$Sprite2D.set_flip_h(false)
 		velocity.x = direction * speed
+	elif forcepushed[2]:
+		if forcepushed[0]:
+			velocity.x = forcepushed[0]
 	else:
 		velocity.x = 0
 		$AnimationPlayer.play("Idle")

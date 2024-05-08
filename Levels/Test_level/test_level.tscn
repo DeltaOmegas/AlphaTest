@@ -109,6 +109,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Ui" parent="." instance=ExtResource("14_0vhrk")]
+unique_name_in_owner = true
 
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]
 [connection signal="timeout" from="Flashlight_timer" to="." method="_on_flashlight_timer_timeout"]
