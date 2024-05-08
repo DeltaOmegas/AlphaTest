@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjh2svxteedf"]
 
-[ext_resource type="Script" path="res://Scripts/main menu.gd" id="1_7o8gt"]
+[ext_resource type="Script" path="res://Scripts/main menu.gd" id="1_copbu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 offset_top = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7o8gt")
+script = ExtResource("1_copbu")
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0

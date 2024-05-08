@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://chlq0ts8fgsp6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s2756"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_right = 1281.0
+offset_bottom = 719.0
+texture = SubResource("CanvasTexture_s2756")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 505.0
+offset_top = 347.0
+offset_right = 975.0
+offset_bottom = 387.0
+text = "Paused. Press esc to unpause"
