@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 
 
-var _health: int = 8
+var _health: int = 8#STOP! DO NOT MODIFY _health WITHOUT set_health THIS CAN CAUSE TERRIBLE BUGS
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var checkpoints: Array = [] # 2d array e.g [[Vector2(position), checkpoint_color(true/false)
 var is_on_elevator = null
@@ -16,8 +16,7 @@ var forcepushed: Array = [0,0,false] #[reqd speed, iterator, is turned on]
 func respawn(): #Used in Death_Zone to respawn player
 	position = checkpoints[-1][0]
 	velocity = Vector2(0, 0) #Fix the "portal effect"
-	_health = 8
-	%Ui.update_health(_health)
+	set_health(8)
 
 func death():
 	respawn()#put death menus and animations here
@@ -44,14 +43,12 @@ func force_jump(data): #force player to jump by a third force
 			velocity = Vector2(500, -500)
 		
 
-func set_health(desired_health: int):#set hp for things like healing poisions
-	if desired_health == 0:
-		_health = desired_health
+func set_health(desired_health: int):#USE ONLY THIS FOR SETTING HEALTH, NOT _health ITSELF
+	if desired_health <= 0:
+		_health = 0
 		%Ui.update_health(_health)
 		death()
 		return
-	elif desired_health < 0:
-		push_error('Player.set_health desired health below zero')
 	_health = desired_health
 	%Ui.update_health(_health)
 
@@ -59,8 +56,7 @@ func damage_by(damage: int):#damage from spikes and enemies
 	if damage >= _health:
 		set_health(0)
 		return
-	_health -= damage
-	%Ui.update_health(_health)
+	set_health(_health - damage)
 
 func get_health():
 	return(_health)
