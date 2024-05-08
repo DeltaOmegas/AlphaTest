@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cayc43rifv4d8"]
+[gd_scene load_steps=6 format=3 uid="uid://cayc43rifv4d8"]
 
 [ext_resource type="Script" path="res://Scripts/Elevator.gd" id="1_ioxrl"]
 [ext_resource type="Script" path="res://Scripts/Elevator_Area.gd" id="1_vow0c"]
 [ext_resource type="TileSet" uid="uid://cqljuxgft5bt0" path="res://Assets/Dark_Tileset_no_collision.tres" id="2_afpub"]
-[ext_resource type="AnimationLibrary" uid="uid://8v76ngbmt6i3" path="res://Assets/Elevator_Animations.res" id="4_hudsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qo1sk"]
 size = Vector2(22, 24)
@@ -36,11 +35,6 @@ layer_0/tile_data = PackedInt32Array(0, 262144, 2, 1, 327680, 2, 2, 393216, 2, -
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 position = Vector2(24, 3)
 shape = SubResource("RectangleShape2D_lyqub")
-
-[node name="Elevator_Animation" type="AnimationPlayer" parent="AnimatableBody2D"]
-libraries = {
-"": ExtResource("4_hudsp")
-}
 
 [connection signal="body_entered" from="AnimatableBody2D/Elevator_Area" to="AnimatableBody2D/Elevator_Area" method="_on_body_entered"]
 [connection signal="body_exited" from="AnimatableBody2D/Elevator_Area" to="AnimatableBody2D/Elevator_Area" method="_on_body_exited"]

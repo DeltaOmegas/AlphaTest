@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbjr112ccmw85"]
+
+[ext_resource type="Script" path="res://Scripts/White_Chain.gd" id="1_mooy0"]
+[ext_resource type="Texture2D" uid="uid://08yy3h1ivyjb" path="res://Assets/White_Chain.png" id="2_j4225"]
+
+[node name="White_Chain" type="Node2D"]
+script = ExtResource("1_mooy0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_j4225")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
