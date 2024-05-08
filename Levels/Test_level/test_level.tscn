@@ -19,10 +19,12 @@
 size = Vector2(5632, 164)
 
 [node name="TestLevel" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_u1oeo")
 
 [node name="White_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 texture_filter = 2
 position = Vector2(1013, -478)

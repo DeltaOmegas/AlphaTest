@@ -19,6 +19,7 @@
 size = Vector2(5632, 164)
 
 [node name="Tutorial_Level" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_u1oeo")
 
 [node name="White_BG" type="Sprite2D" parent="."]

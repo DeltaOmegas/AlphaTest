@@ -39,12 +39,20 @@ func _ready():
 		%Black_BG.visible = true
 		$Player.set_collision_mask_value(1, true)
 		$Player.set_collision_mask_value(2, false)
+	for node in get_children():
+		if not node.name.ends_with('IgnorePause'):
+			node.process_mode = 1
 
 func _process(_delta):
 	#var is_switching: bool = $Colors.is_playing()
 	#var is_highlighting: bool = $Highlights.is_playing()
 	var is_anything_playing: bool = $Highlights.is_playing() or $Colors.is_playing()
 	
+	if Input.is_action_just_pressed('pause'):
+		if get_tree().paused == true:
+			get_tree().paused = false
+		else:
+			get_tree().paused = true
 	if Input.is_action_just_pressed("switch_color") and not(is_anything_playing):
 		switch_color()
 	if Input.is_action_just_pressed("highlight") and not(is_anything_playing) and allow_flashlight:

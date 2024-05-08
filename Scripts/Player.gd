@@ -77,15 +77,12 @@ func _process(_delta):
 
 
 func _physics_process(delta):
-	print(velocity)
-	print(forcepushed)
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	elif not forcepushed[1]:
 		forcepushed = [0,0, false]
 		
 	if not forcepushed[1]:
-		print('clearing forcepushed')
 		forcepushed[0] = 0
 	else:
 		forcepushed[1] -= 1
