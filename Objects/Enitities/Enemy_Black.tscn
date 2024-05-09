@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bx2c4cyfcpsio"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_o7jma"]
-[ext_resource type="Script" path="res://Scripts/Enemy_attack_zone.gd" id="2_rhmvd"]
-[ext_resource type="Script" path="res://Scripts/Defeat_Zone.gd" id="3_kq6k3"]
+[ext_resource type="Script" path="res://Scripts/Entities/Enemy.gd" id="1_o7jma"]
+[ext_resource type="Script" path="res://Scripts/Entities/Enemy_attack_zone.gd" id="2_rhmvd"]
+[ext_resource type="Script" path="res://Scripts/Objects/Defeat_Zone.gd" id="3_kq6k3"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_g1chp"]
 

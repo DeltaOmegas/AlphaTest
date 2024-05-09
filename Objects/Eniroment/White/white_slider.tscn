@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwq22t4ytuyhi"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Slider.gd" id="1_7tk3n"]
+[ext_resource type="Texture2D" uid="uid://cdmvx4lshd3j1" path="res://Assets/Parts/Sliders/White/White_Slider_End.png" id="2_krtiy"]
+[ext_resource type="Texture2D" uid="uid://soqmt3rh64he" path="res://Assets/Parts/Sliders/White/White_Slider_Middle.png" id="3_01orm"]
+[ext_resource type="Texture2D" uid="uid://cp2kr7v6muuld" path="res://Assets/Parts/Sliders/White/White_Slider_Start.png" id="4_swfvi"]
+[ext_resource type="TileSet" uid="uid://c4v2bl2oih1w8" path="res://Assets/Tilesets/Light_Tileset_no_collision.tres" id="5_qv3i0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbqml"]
+size = Vector2(48, 16)
+
+[node name="Slider" type="Node2D"]
+script = ExtResource("1_7tk3n")
+
+[node name="End_Part" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+position = Vector2(40, -8)
+texture = ExtResource("2_krtiy")
+
+[node name="Middle_Part" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+texture_repeat = 2
+position = Vector2(16, -16)
+texture = ExtResource("3_01orm")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Start_Part" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+texture = ExtResource("4_swfvi")
+centered = false
+offset = Vector2(0, -16)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_mask = 0
+
+[node name="TileMap" type="TileMap" parent="AnimatableBody2D"]
+tile_set = ExtResource("5_qv3i0")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 524288, 0, -65535, 589824, 0, -1, 589824, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_qbqml")

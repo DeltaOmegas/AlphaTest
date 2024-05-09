@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqamqdr5f24ns"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Elevator&chain/Chain.gd" id="1_cktht"]
+[ext_resource type="Texture2D" uid="uid://d2fyumkdhe4ba" path="res://Assets/Parts/Chains/Black_Chain.png" id="2_jwhne"]
+
+[node name="Black_Chain" type="Node2D"]
+script = ExtResource("1_cktht")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_jwhne")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4ebnqad6pjto"]
 
-[ext_resource type="Texture2D" uid="uid://d2j144kictas3" path="res://Assets/health_bar.png" id="1_xsmsf"]
+[ext_resource type="Texture2D" uid="uid://d2j144kictas3" path="res://Assets/UI/health_bar.png" id="1_xsmsf"]
 
 [node name="Node2D" type="Node2D"]
 

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbjr112ccmw85"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Elevator&chain/Chain.gd" id="1_6dpou"]
+[ext_resource type="Texture2D" uid="uid://08yy3h1ivyjb" path="res://Assets/Parts/Chains/White_Chain.png" id="2_5ssx8"]
+
+[node name="White_Chain" type="Node2D"]
+script = ExtResource("1_6dpou")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("2_5ssx8")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

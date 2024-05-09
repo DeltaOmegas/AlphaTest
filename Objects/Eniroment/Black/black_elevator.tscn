@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cayc43rifv4d8"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Elevator&chain/Elevator.gd" id="1_ll5fl"]
+[ext_resource type="Script" path="res://Scripts/Objects/Elevator&chain/Elevator_Area.gd" id="2_mjq01"]
+[ext_resource type="TileSet" uid="uid://cqljuxgft5bt0" path="res://Assets/Tilesets/Dark_Tileset_no_collision.tres" id="3_7bft2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qo1sk"]
+size = Vector2(22, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyqub"]
+size = Vector2(48, 6)
+
+[node name="Black_Elevator" type="Node2D"]
+script = ExtResource("1_ll5fl")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Elevator_Area" type="Area2D" parent="AnimatableBody2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("2_mjq01")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Elevator_Area"]
+position = Vector2(24, -12)
+shape = SubResource("RectangleShape2D_qo1sk")
+
+[node name="Elevator_Base" type="TileMap" parent="AnimatableBody2D"]
+tile_set = ExtResource("3_7bft2")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 262144, 2, 1, 327680, 2, 2, 393216, 2, -65536, 262144, 1, -65534, 393216, 1, -65535, 327680, 1, -131071, 327680, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(24, 3)
+shape = SubResource("RectangleShape2D_lyqub")
+
+[connection signal="body_entered" from="AnimatableBody2D/Elevator_Area" to="AnimatableBody2D/Elevator_Area" method="_on_body_entered"]
+[connection signal="body_exited" from="AnimatableBody2D/Elevator_Area" to="AnimatableBody2D/Elevator_Area" method="_on_body_exited"]

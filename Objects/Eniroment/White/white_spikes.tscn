@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://coqqi0ibl5wwi"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Spikes/Spikes.gd" id="1_mowq8"]
+[ext_resource type="Texture2D" uid="uid://b5a0a8lokpeko" path="res://Assets/Parts/Spikes/White_Spikes.png" id="2_7sf2h"]
+[ext_resource type="Script" path="res://Scripts/Objects/Spikes/Spikes_Area.gd" id="3_svpfp"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mowq8")
+
+[node name="Spike" type="StaticBody2D" parent="."]
+texture_repeat = 2
+collision_mask = 0
+
+[node name="Texture" type="Sprite2D" parent="Spike"]
+texture_repeat = 2
+texture = ExtResource("2_7sf2h")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike"]
+polygon = PackedVector2Array(0, 0, 3, -7, 5, -7, 8, -2, 11, -7, 13, -7, 16, -2)
+
+[node name="Spike_Area" type="Area2D" parent="Spike"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_svpfp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike/Spike_Area"]
+polygon = PackedVector2Array(0, 0, 2, -6, 2, -8, 6, -8, 6, -6, 8, -3, 10, -6, 10, -8, 14, -8, 14, -6, 16, -3)
+
+[connection signal="body_entered" from="Spike/Spike_Area" to="Spike/Spike_Area" method="_on_body_entered"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://devysachcnue7"]
 
-[ext_resource type="TileSet" uid="uid://c8ba6boispnh1" path="res://Assets/Light_Tileset.tres" id="1_v44ax"]
-[ext_resource type="PackedScene" uid="uid://dvqyl1hv6avac" path="res://Objects/Eniroment/white_checkpoint.tscn" id="2_31j1a"]
+[ext_resource type="TileSet" uid="uid://c8ba6boispnh1" path="res://Assets/Tilesets/Light_Tileset.tres" id="1_v44ax"]
+[ext_resource type="PackedScene" uid="uid://dvqyl1hv6avac" path="res://Objects/Eniroment/White/white_checkpoint.tscn" id="2_31j1a"]
 
 [node name="White_Ground" type="Node2D"]
 
