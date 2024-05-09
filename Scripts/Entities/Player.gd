@@ -9,8 +9,9 @@ extends CharacterBody2D
 
 var _health: int = 8#STOP! DO NOT MODIFY _health WITHOUT set_health THIS CAN CAUSE TERRIBLE BUGS
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var checkpoints: Array = [] # 2d array e.g [[Vector2(position), checkpoint_color(true/false)
-var is_on_elevator = null
+var checkpoints: Array # 2d array e.g [[Vector2(position), checkpoint_color(true/false)
+var is_on_elevator
+var is_on_ladder 
 var forcepushed: Array = [0,0,false] #[reqd speed, iterator, is turned on]
 
 func respawn(): #Used in Death_Zone to respawn player
@@ -19,7 +20,7 @@ func respawn(): #Used in Death_Zone to respawn player
 	set_health(8)
 
 func death():
-	respawn()#put death menus and animations here
+	respawn() #put death menus and animations here
 
 func checkpoint(data: Array): #Used in Checkpoint_Area to add new checkpoint
 	if not (data in checkpoints): #Anti-garbage protection
@@ -35,6 +36,8 @@ func force_jump(data): #force player to jump by a third force
 	elif typeof(data) == 4:
 		if data == "spike":
 			velocity.y = -700
+		elif data == "JumpPad":
+			velocity.y = -1000
 		elif data == 'enemy hit x-':
 			forcepushed = [-500,10,true]
 			velocity = Vector2(-500, -500)
@@ -77,7 +80,7 @@ func _process(_delta):
 
 
 func _physics_process(delta):
-	if not is_on_floor():
+	if not is_on_floor() and not is_on_ladder:
 		velocity.y += gravity * delta
 	elif not forcepushed[1]:
 		forcepushed = [0,0, false]

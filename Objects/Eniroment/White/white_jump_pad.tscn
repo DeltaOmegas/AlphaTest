@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://prcopu43eeut"]
+
+[ext_resource type="Texture2D" uid="uid://cxpqa3ndgwxh6" path="res://Assets/Parts/White_JumpPad.png" id="1_dgqii"]
+[ext_resource type="Script" path="res://Scripts/Objects/JumpPad.gd" id="2_fxxwm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26g38"]
+size = Vector2(14, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df8b8"]
+size = Vector2(14, 6)
+
+[sub_resource type="Animation" id="Animation_yv5dx"]
+resource_name = "JumpPad"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 2, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jjlp6"]
+_data = {
+"JumpPad": SubResource("Animation_yv5dx")
+}
+
+[node name="White_JumpPad" type="Node2D"]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("1_dgqii")
+hframes = 3
+
+[node name="Area2D" type="Area2D" parent="AnimatableBody2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_fxxwm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D/Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_26g38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_df8b8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jjlp6")
+}
+speed_scale = 1.5
+
+[connection signal="body_entered" from="AnimatableBody2D/Area2D" to="AnimatableBody2D/Area2D" method="_on_body_entered"]

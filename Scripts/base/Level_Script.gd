@@ -28,6 +28,8 @@ func _ready():
 		%Black_BG.visible = false
 		$Player.set_collision_mask_value(1, false)
 		$Player.set_collision_mask_value(2, true)
+		$Player.set_collision_layer_value(3, false)
+		$Player.set_collision_layer_value(4, true)
 	else:
 		$White.modulate[3] = 1
 		$White.z_index = 4
@@ -39,13 +41,14 @@ func _ready():
 		%Black_BG.visible = true
 		$Player.set_collision_mask_value(1, true)
 		$Player.set_collision_mask_value(2, false)
+		$Player.set_collision_layer_value(3, true)
+		$Player.set_collision_layer_value(4, false)
+		
 	for node in get_children():
 		if not node.name.ends_with('IgnorePause'):
 			node.process_mode = 1
 
 func _process(_delta):
-	#var is_switching: bool = $Colors.is_playing()
-	#var is_highlighting: bool = $Highlights.is_playing()
 	var is_anything_playing: bool = $Highlights.is_playing() or $Colors.is_playing()
 	
 	if Input.is_action_just_pressed('pause'):
@@ -53,8 +56,10 @@ func _process(_delta):
 			get_tree().paused = false
 		else:
 			get_tree().paused = true
+			
 	if Input.is_action_just_pressed("switch_color") and not(is_anything_playing):
 		switch_color()
+		
 	if Input.is_action_just_pressed("highlight") and not(is_anything_playing) and allow_flashlight:
 		$Flashlight_timer.start()
 		allow_flashlight = false
@@ -62,6 +67,7 @@ func _process(_delta):
 			$Highlights.play("Blackhole")
 		else:
 			$Highlights.play("Flashlight")
+			
 	if not allow_flashlight:
 		$Ui.update_timer(str(round($Flashlight_timer.get_time_left())))
 	else:
