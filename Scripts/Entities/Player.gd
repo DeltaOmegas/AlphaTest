@@ -59,6 +59,10 @@ func set_health(desired_health: int):#USE ONLY THIS FOR SETTING HEALTH, NOT _hea
 		return
 	_health = desired_health
 	%Ui.update_health(_health)
+	
+	#TODO NEONX's health policy (c):
+	#Player start with 8hp, 0 hp - no hp, i need to add func wich heals to 10 hp instantly
+	
 
 func damage_by(damage: int):#damage from spikes and enemies
 	if damage >= _health:

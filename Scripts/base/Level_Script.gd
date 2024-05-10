@@ -65,17 +65,11 @@ func _process(_delta):
 		switch_color()
 		
 	if Input.is_action_just_pressed("highlight") and not(is_anything_playing) and allow_flashlight:
-		$Flashlight_timer.start()
-		allow_flashlight = false
+		%Ui.start_timer()
 		if COLOR:
 			$Highlights.play("Blackhole")
 		else:
 			$Highlights.play("Flashlight")
-			
-	if not allow_flashlight:
-		$Ui.update_timer(str(round($Flashlight_timer.get_time_left())))
-	else:
-		$Ui.update_timer('Flashlight is availible')
 
 
 func _on_flashlight_timer_timeout():
