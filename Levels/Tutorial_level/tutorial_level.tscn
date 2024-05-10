@@ -21,10 +21,10 @@ size = Vector2(5632, 164)
 [node name="Tutorial_Level" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_u1oeo")
-COLOR = true
 
 [node name="White_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 texture_filter = 2
 position = Vector2(1013, -478)
@@ -35,6 +35,7 @@ script = ExtResource("2_h6gvm")
 
 [node name="Black_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 z_index = 1
 texture_filter = 2
@@ -51,20 +52,19 @@ scale = Vector2(5, 5)
 
 [node name="White" parent="." instance=ExtResource("7_ibn08")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 z_index = 4
 scale = Vector2(5, 5)
 
 [node name="Player" parent="." instance=ExtResource("3_t0f2e")]
 z_index = 4
-position = Vector2(-95, -127)
+position = Vector2(116, -527)
 scale = Vector2(5, 5)
 collision_layer = 0
 collision_mask = 0
 platform_floor_layers = 4294967043
 platform_wall_layers = 3
 speed = 400
-jump_height = 700
+jump_height = 650
 
 [node name="Main_Camera" type="Camera2D" parent="Player"]
 unique_name_in_owner = true
