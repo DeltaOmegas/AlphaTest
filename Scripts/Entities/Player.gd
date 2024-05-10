@@ -86,15 +86,15 @@ func _process(_delta):
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		if not $Animation.get_animation() == 'Jump':
-			$Animation.play('Fall 1') #FIXME animation plays in rounds
+		if (not $Animation.get_animation() == 'Jump' or velocity.y>0) and not ($Animation.get_animation() == 'Fall 2'):
+			$Animation.play('Fall 2')
 		if forcejump_in_progress:
 			forcejump_in_progress -= 1
 	elif not forcepushed[1] and not forcejump_in_progress:
 		forcepushed = [0,0, false] # == if on_the_floor and forcepushed timer has ran out already, stop forcepushed shit
 		# this is requred to stop player from correcting his position even after 9 ticks
 		$Animation.play('Idle')
-	
+
 	
 	if not forcepushed[1]: #to keep the speed for the firs 9 ticks, fix for the bug
 		forcepushed[0] = 0 
@@ -121,6 +121,5 @@ func _physics_process(delta):
 		velocity.y = jump_height
 		$Animation.play('Jump')
 		
-	print($Animation.get_animation())
 	move_and_slide()
 	
