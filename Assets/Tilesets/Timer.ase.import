@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://djmfkjm840yx3"
+path="res://.godot/imported/Timer.ase-ef9d7ec5d4334d168efe67ced2105e45.res"
+
+[deps]
+
+source_file="res://Assets/Tilesets/Timer.ase"
+dest_files=["res://.godot/imported/Timer.ase-ef9d7ec5d4334d168efe67ced2105e45.res"]
+
+[params]
+

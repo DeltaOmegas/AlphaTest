@@ -30,8 +30,5 @@ layer_0/tile_data = PackedInt32Array(1, 720896, 9, 2, 720896, 9, 3, 720896, 9, 4
 
 [node name="White_Checkpoint" parent="." instance=ExtResource("2_b6j44")]
 
-[node name="White_JumpPad" parent="." instance=ExtResource("5_qdaw8")]
-position = Vector2(302, -8)
-
 [node name="White_JumpPad2" parent="." instance=ExtResource("5_qdaw8")]
 position = Vector2(872, 104)
