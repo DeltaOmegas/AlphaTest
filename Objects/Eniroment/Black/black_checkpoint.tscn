@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckt5lqa6ly4im"]
+[gd_scene load_steps=8 format=3 uid="uid://ckt5lqa6ly4im"]
 
-[ext_resource type="Texture2D" uid="uid://b1ng8x4aqxrdw" path="res://Assets/dark_tilemap.png" id="1_do45e"]
 [ext_resource type="TileSet" uid="uid://deu2p62p6yqt0" path="res://Assets/Tilesets/Dark_Tileset.tres" id="1_oc2w4"]
 [ext_resource type="Script" path="res://Scripts/Objects/Checkpint_Area.gd" id="2_bonr2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qlw4"]
-atlas = ExtResource("1_do45e")
 region = Rect2(35, 86, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ibve"]

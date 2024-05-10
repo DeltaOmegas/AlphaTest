@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvqyl1hv6avac"]
+[gd_scene load_steps=8 format=3 uid="uid://dvqyl1hv6avac"]
 
 [ext_resource type="TileSet" uid="uid://c8ba6boispnh1" path="res://Assets/Tilesets/Light_Tileset.tres" id="1_0byi3"]
-[ext_resource type="Texture2D" uid="uid://m8hwti5ogu52" path="res://Assets/light_tilemap.png" id="1_2jpsk"]
 [ext_resource type="Script" path="res://Scripts/Objects/Checkpint_Area.gd" id="2_n1eqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34n65"]
-atlas = ExtResource("1_2jpsk")
 region = Rect2(35, 86, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ut0c2"]

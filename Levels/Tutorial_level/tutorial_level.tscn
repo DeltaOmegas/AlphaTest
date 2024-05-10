@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/base/White_BG.gd" id="2_h6gvm"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/base/Ellipse 1.svg" id="2_najiq"]
 [ext_resource type="Texture2D" uid="uid://c2qt44jrcuom8" path="res://Assets/base/Ellipse 2.svg" id="3_qggny"]
-[ext_resource type="PackedScene" uid="uid://c052ldsxyylee" path="res://Objects/Enitities/player.tscn" id="3_t0f2e"]
+[ext_resource type="PackedScene" uid="uid://c052ldsxyylee" path="res://Objects/Enitities/Player.tscn" id="3_t0f2e"]
 [ext_resource type="Script" path="res://Scripts/base/Black_BG.gd" id="4_cxaqx"]
 [ext_resource type="Script" path="res://Scripts/Objects/Death_Zone.gd" id="6_gb857"]
 [ext_resource type="PackedScene" uid="uid://dsxrgee3tpdsc" path="res://Levels/Tutorial_level/Enviroment/black_ground.tscn" id="6_mpvh4"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cag1mrccxn3dr" path="res://Objects/UI/UI.tscn" id="14_angvh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sguj5"]
-size = Vector2(5632, 164)
+size = Vector2(11047, 164)
 
 [node name="Tutorial_Level" type="Node2D"]
 process_mode = 3
@@ -95,7 +95,7 @@ collision_mask = 12
 script = ExtResource("6_gb857")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Zone"]
-position = Vector2(776, 810)
+position = Vector2(4820.5, 1123)
 shape = SubResource("RectangleShape2D_sguj5")
 
 [node name="Highlights" type="AnimationPlayer" parent="."]
