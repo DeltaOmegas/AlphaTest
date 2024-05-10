@@ -159,7 +159,7 @@ script = ExtResource("1_onsls")
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_cace2")
-animation = &"Move"
+animation = &"Fall 1"
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",

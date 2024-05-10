@@ -12,6 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var checkpoints: Array # 2d array e.g [[Vector2(position), checkpoint_color(true/false)
 var is_on_elevator
 var forcepushed: Array = [0,0,false] #[reqd speed, iterator, is turned on]
+var forcejump_in_progress: int = 0 #to fix animations
 
 
 func animation(type):
@@ -34,6 +35,7 @@ func get_last_checkpoint_color(): #Used in Death_Zone to switch color if it is n
 
 func force_jump(data): #force player to jump by a third force
 	$Animation.play("Jump")
+	forcejump_in_progress = 10
 	if typeof(data) == 2:
 		velocity.y = data
 	elif typeof(data) == 4:
@@ -84,9 +86,14 @@ func _process(_delta):
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	elif not forcepushed[1]:
+		if not $Animation.get_animation() == 'Jump':
+			$Animation.play('Fall 1') #FIXME animation plays in rounds
+		if forcejump_in_progress:
+			forcejump_in_progress -= 1
+	elif not forcepushed[1] and not forcejump_in_progress:
 		forcepushed = [0,0, false] # == if on_the_floor and forcepushed timer has ran out already, stop forcepushed shit
 		# this is requred to stop player from correcting his position even after 9 ticks
+		$Animation.play('Idle')
 	
 	
 	if not forcepushed[1]: #to keep the speed for the firs 9 ticks, fix for the bug
@@ -94,20 +101,26 @@ func _physics_process(delta):
 	else: #the timer itself
 		forcepushed[1] -= 1
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_height
+	
 	var direction = Input.get_axis("left", "right")
 	if direction and not forcepushed[2]: # if forcepushed is active, get ur hands off the keyboard
 		if direction == -1:
-			$Animation.set_flip_h(false)
-		else:
 			$Animation.set_flip_h(true)
+		else:
+			$Animation.set_flip_h(false)
 		velocity.x = direction * speed
+		if is_on_floor() and not forcejump_in_progress:
+			$Animation.play('Move')
 	elif forcepushed[2]: #forcepushed speed enforcement(if we just declared speed and turned off velocty = 0, it will bug out eventually)
 		if forcepushed[0]: #keeping the speed for 9 ticks part
 			velocity.x = forcepushed[0]
 	else:
 		velocity.x = 0
-	
+		
+	if Input.is_action_just_pressed("jump") and is_on_floor(): #if it causes problems, try moving it in front of the direction block
+		velocity.y = jump_height
+		$Animation.play('Jump')
+		
+	print($Animation.get_animation())
 	move_and_slide()
 	
