@@ -42,7 +42,7 @@ func force_jump(data): #force player to jump by a third force
 		elif data == "JumpPad":
 			velocity.y = -1000
 		elif data == 'enemy hit x-':
-			forcepushed = [-500,10,true]
+			forcepushed = [-500,10,true] #setting desired speed and amount of ticks
 			velocity = Vector2(-500, -500)
 		elif data == 'enemy hit x+':
 			forcepushed = [500,10,true]
@@ -85,24 +85,26 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	elif not forcepushed[1]:
-		forcepushed = [0,0, false]
-		
-	if not forcepushed[1]:
-		forcepushed[0] = 0
-	else:
+		forcepushed = [0,0, false] # == if on_the_floor and forcepushed timer has ran out already, stop forcepushed shit
+		# this is requred to stop player from correcting his position even after 9 ticks
+	
+	
+	if not forcepushed[1]: #to keep the speed for the firs 9 ticks, fix for the bug
+		forcepushed[0] = 0 
+	else: #the timer itself
 		forcepushed[1] -= 1
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_height
 	var direction = Input.get_axis("left", "right")
-	if direction and not forcepushed[2]:
+	if direction and not forcepushed[2]: # if forcepushed is active, get ur hands off the keyboard
 		if direction == -1:
 			$Animation.set_flip_h(false)
 		else:
 			$Animation.set_flip_h(true)
 		velocity.x = direction * speed
-	elif forcepushed[2]:
-		if forcepushed[0]:
+	elif forcepushed[2]: #forcepushed speed enforcement(if we just declared speed and turned off velocty = 0, it will bug out eventually)
+		if forcepushed[0]: #keeping the speed for 9 ticks part
 			velocity.x = forcepushed[0]
 	else:
 		velocity.x = 0

@@ -57,7 +57,7 @@ scale = Vector2(5, 5)
 
 [node name="Player" parent="." instance=ExtResource("3_t0f2e")]
 z_index = 4
-position = Vector2(116, -527)
+position = Vector2(2839, -255)
 scale = Vector2(5, 5)
 collision_layer = 0
 collision_mask = 0

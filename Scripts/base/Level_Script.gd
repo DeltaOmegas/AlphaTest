@@ -45,17 +45,21 @@ func _ready():
 		$Player.set_collision_layer_value(4, false)
 		
 	for node in get_children():
-		if not node.name.ends_with('IgnorePause'):
-			node.process_mode = 1
+		if node == %Ui:
+			node.set_process_mode(PROCESS_MODE_ALWAYS)
+		else:
+			node.set_process_mode(PROCESS_MODE_PAUSABLE)
 
 func _process(_delta):
 	var is_anything_playing: bool = $Highlights.is_playing() or $Colors.is_playing()
 	
 	if Input.is_action_just_pressed('pause'):
-		if get_tree().paused == true:
+		if get_tree().paused:
 			get_tree().paused = false
+			%Ui.set_pause(false)
 		else:
 			get_tree().paused = true
+			%Ui.set_pause(true)
 			
 	if Input.is_action_just_pressed("switch_color") and not(is_anything_playing):
 		switch_color()

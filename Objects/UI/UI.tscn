@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cag1mrccxn3dr"]
+[gd_scene load_steps=3 format=3 uid="uid://cag1mrccxn3dr"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_785vw"]
+[ext_resource type="PackedScene" uid="uid://chlq0ts8fgsp6" path="res://Objects/UI/Pause_menu.tscn" id="2_xfa2w"]
 
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource("1_785vw")
@@ -18,3 +19,6 @@ offset_top = 576.0
 offset_right = 268.0
 offset_bottom = 599.0
 text = "It Should be a health indicator"
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_xfa2w")]
+visible = false
