@@ -7,8 +7,10 @@ var allow_switch_color: bool = false
 func switch_color():
 		COLOR = not(COLOR)
 		if COLOR:
+			$Player.set_stuck_detectors(2)
 			$Colors.play("to_White")
 		else:
+			$Player.set_stuck_detectors(1)
 			$Colors.play("to_Black")
 
 
@@ -31,6 +33,8 @@ func _ready():
 		$Player.set_collision_mask_value(2, true)
 		$Player.set_collision_layer_value(3, false)
 		$Player.set_collision_layer_value(4, true)
+		$Player.set_stuck_detectors(2)
+		
 	else:
 		$White.modulate[3] = 1
 		$White.z_index = 4
@@ -44,6 +48,8 @@ func _ready():
 		$Player.set_collision_mask_value(2, false)
 		$Player.set_collision_layer_value(3, true)
 		$Player.set_collision_layer_value(4, false)
+		$Player.set_stuck_detectors(1)
+
 		
 	for node in get_children():
 		if node == %Ui:

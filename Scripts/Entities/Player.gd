@@ -13,6 +13,7 @@ var checkpoints: Array # 2d array e.g [[Vector2(position), checkpoint_color(true
 var is_on_elevator
 var forcepushed: Array = [0,0,false] #[reqd speed, iterator, is turned on]
 var forcejump_in_progress: int = 0 #to fix animations
+var list_of_collisions: Array
 
 
 func animation(type):
@@ -56,13 +57,22 @@ func set_health(desired_health: int):#USE ONLY THIS FOR SETTING HEALTH, NOT _hea
 		_health = 0
 		%Ui.update_health(_health)
 		death()
-		return
+		return 1
 	_health = desired_health
 	%Ui.update_health(_health)
+	return 0
 	
+func kill_slowly() -> void:
+	if not set_health(_health-1):
+		$Kill_timer.start()
+
+func _on_kill_timer_timeout():
+	kill_slowly()
+
 	#TODO NEONX's health policy (c):
 	#Player start with 8hp, 0 hp - no hp, i need to add func wich heals to 10 hp instantly
-	
+
+
 
 func damage_by(damage: int):#damage from spikes and enemies
 	if damage >= _health:
@@ -82,6 +92,12 @@ func _ready():
 	if on_start_position:
 		position = Vector2(120, -150)
 
+func set_stuck_detectors(color:int):
+	$Stuck_detector.collision_mask = color
+	$Stuck_detector2.collision_mask = color
+	$Stuck_detector3.collision_mask = color
+	$Stuck_detector4.collision_mask = color
+	print('set_stuck_detectors', color)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("down") and is_on_elevator != null:
@@ -90,6 +106,11 @@ func _process(_delta):
 		is_on_elevator.elevator_up()
 
 func _physics_process(delta):
+	print($Stuck_detector.collision_mask)
+	var last_collision = get_last_slide_collision()
+	if not list_of_collisions.has(last_collision):
+		list_of_collisions.append(last_collision)
+		
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		if (not $Animation.get_animation() == 'Jump' or velocity.y>0) and not ($Animation.get_animation() == 'Fall 2'):
@@ -100,6 +121,12 @@ func _physics_process(delta):
 		forcepushed = [0,0, false] # == if on_the_floor and forcepushed timer has ran out already, stop forcepushed shit
 		# this is requred to stop player from correcting his position even after 9 ticks
 		$Animation.play('Idle')
+		
+		
+	if $Stuck_detector.has_overlapping_bodies() and $Stuck_detector2.has_overlapping_bodies() and $Stuck_detector3.has_overlapping_bodies() and $Stuck_detector4.has_overlapping_bodies():
+		print('stuck')
+		kill_slowly()
+	
 
 	
 	if not forcepushed[1]: #to keep the speed for the firs 9 ticks, fix for the bug
@@ -128,4 +155,5 @@ func _physics_process(delta):
 		$Animation.play('Jump')
 		
 	move_and_slide()
-	
+
+
