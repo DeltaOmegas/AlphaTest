@@ -14,10 +14,17 @@ var is_on_elevator
 var forcepushed: Array = [0,0,false] #[reqd speed, iterator, is turned on]
 var forcejump_in_progress: int = 0 #to fix animations
 var list_of_collisions: Array
+var zoom_tween
 
 
-func animation(type):
-	pass
+func set_zoom(zoom: float):
+	if zoom_tween:
+		zoom_tween.kill()
+		zoom_tween = null
+	zoom_tween = %Main_Camera.create_tween()
+	zoom_tween.tween_property(%Main_Camera, "zoom", Vector2(zoom, zoom), 0.5)
+	#FIXME: 1.7 bg scale isn't enough for 0.5 zoom, therefore the player sees sharp transition 
+	
 func respawn(): #Used in Death_Zone to respawn player
 	position = checkpoints[-1][0]
 	velocity = Vector2(0, 0) #Fix the "portal effect"
@@ -44,6 +51,8 @@ func force_jump(data): #force player to jump by a third force
 			velocity.y = -700
 		elif data == "JumpPad":
 			velocity.y = -1000
+		elif data == "enemy_defeated":
+			velocity.y = -300
 		elif data == 'enemy hit x-':
 			forcepushed = [-500,10,true] #setting desired speed and amount of ticks
 			velocity = Vector2(-500, -500)
@@ -85,7 +94,7 @@ func _ready():
 	$Blackhole.visible = false
 	%Ui.update_health(_health)
 	if on_start_position:
-		position = Vector2(120, -150)
+		position = Vector2(-1152, -430)
 
 func set_stuck_detectors(color:int):
 	$Stuck_detector.collision_mask = color

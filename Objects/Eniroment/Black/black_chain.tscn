@@ -9,6 +9,8 @@ script = ExtResource("1_cktht")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_repeat = 2
 texture = ExtResource("2_jwhne")
+centered = false
+offset = Vector2(0, -16)
 flip_v = true
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)

@@ -17,7 +17,7 @@ func elevator_down():
 	if direction:
 		tween.tween_property($"..", "position", Vector2(0, 16*length-6), ((Vector2(0, 16*length-6)-$"..".position)/drop_speed).y)
 	else:
-		tween.tween_property($"..", "position", Vector2(0, 0), ($"..".position/drop_speed).y)
+		tween.tween_property($"..", "position", Vector2(0, 0), -($"..".position/drop_speed).y)
 
 
 func elevator_up():
@@ -28,7 +28,7 @@ func elevator_up():
 	if direction:
 		tween.tween_property($"..", "position", Vector2(0, 0), ($"..".position/lift_speed).y)
 	else:
-		tween.tween_property($"..", "position", Vector2(0, -16*length), ((Vector2(0, 16*length)-$"..".position)/lift_speed).y)
+		tween.tween_property($"..", "position", Vector2(0, -16*length+6), ((Vector2(0, 16*length)-$"..".position)/lift_speed).y)
 		
 		
 func _on_body_entered(body):

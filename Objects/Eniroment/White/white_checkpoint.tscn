@@ -1,8 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvqyl1hv6avac"]
+[gd_scene load_steps=10 format=3 uid="uid://dvqyl1hv6avac"]
 
 [ext_resource type="TileSet" uid="uid://c8ba6boispnh1" path="res://Assets/Tilesets/Light_Tileset.tres" id="1_0byi3"]
 [ext_resource type="Texture2D" uid="uid://b4exld7v00qqh" path="res://Assets/Tilesets/Tilemaps/light_tilemap2.png" id="1_4uuoy"]
 [ext_resource type="Script" path="res://Scripts/Objects/Checkpint_Area.gd" id="2_n1eqk"]
+
+[sub_resource type="GDScript" id="GDScript_ymvjb"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Checkpoint_Core.visible = true
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5xxx"]
 atlas = ExtResource("1_4uuoy")
@@ -63,9 +72,10 @@ _data = {
 }
 
 [node name="White_Checkpoint" type="Node2D"]
+script = SubResource("GDScript_ymvjb")
 
 [node name="Checkpoint_Core" type="Sprite2D" parent="."]
-position = Vector2(24, -500)
+position = Vector2(24, -39)
 texture = SubResource("AtlasTexture_k5xxx")
 
 [node name="Checkpoint_Base" type="TileMap" parent="."]

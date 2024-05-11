@@ -3,10 +3,11 @@ extends CharacterBody2D
 var dead: bool = false
 var hold: Array = [false, 0]
 
-@export var base_velocity: int = -100
+@export var speed: int = 100
 
 
-
+func _ready():
+	speed *= -1
 
 
 
@@ -20,9 +21,9 @@ func _physics_process(_delta):
 	#not requred anymore, but just in case
 	
 	if is_on_wall(): #and not hold[0]:
-		base_velocity *= -1
+		speed *= -1
 		hold = [true, 0]
-	velocity.x = base_velocity
+	velocity.x = speed
 	move_and_slide()
 	
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxpqa3ndgwxh6"
-path="res://.godot/imported/White_JumpPad.png-9618d849465ffd040891489b05c05588.ctex"
+uid="uid://6sxljnfod0a"
+path="res://.godot/imported/Enemy_normal_ver.png-dfb47408605ff483a98530e556e6a270.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Parts/White_JumpPad.png"
-dest_files=["res://.godot/imported/White_JumpPad.png-9618d849465ffd040891489b05c05588.ctex"]
+source_file="res://Assets/Entities/Enemy_normal_ver.png"
+dest_files=["res://.godot/imported/Enemy_normal_ver.png-dfb47408605ff483a98530e556e6a270.ctex"]
 
 [params]
 

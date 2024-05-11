@@ -26,7 +26,7 @@ func _ready():
 		$White.z_index = 3
 		$Black.modulate[3] = 1
 		$Black.z_index = 4
-		%White_BG.scale = Vector2(1.7, 1.7)
+		%White_BG.scale = Vector2(10, 10)
 		%White_BG.visible = true
 		%Black_BG.scale = Vector2(0.01, 0.01)
 		%Black_BG.visible = false
@@ -43,7 +43,7 @@ func _ready():
 		$Black.z_index = 3
 		%White_BG.scale = Vector2(0.01, 0.01)
 		%White_BG.visible = false
-		%Black_BG.scale = Vector2(1.7, 1.7)
+		%Black_BG.scale = Vector2(10, 10)
 		%Black_BG.visible = true
 		$Player.set_collision_mask_value(1, true)
 		$Player.set_collision_mask_value(2, false)

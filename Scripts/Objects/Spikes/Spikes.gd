@@ -15,15 +15,22 @@ func add(array: PackedVector2Array, depth: int):
 	
 
 func _ready():
-	add(collision_array.slice(1), length-1)
-	extended_collision[-1].y = 0
-	collision_array += extended_collision
-	$Spike/CollisionPolygon2D.set_polygon(collision_array)
-	extended_collision.clear()
-	add(attack_collision_aray.slice(1), length-1)
-	extended_collision[-1].y = 0
-	attack_collision_aray += extended_collision
-	$Spike/Spike_Area/CollisionPolygon2D.set_polygon(attack_collision_aray)
-	$Spike/Texture.region_rect = Rect2(0, 0, 16*length, 16)
+	if length > 1:
+		add(collision_array.slice(1), length-1)
+		extended_collision[-1].y = 0
+		collision_array += extended_collision
+		$Spike/CollisionPolygon2D.set_polygon(collision_array)
+		extended_collision.clear()
+		add(attack_collision_aray.slice(1), length-1)
+		extended_collision[-1].y = 0
+		attack_collision_aray += extended_collision
+		$Spike/Spike_Area/CollisionPolygon2D.set_polygon(attack_collision_aray)
+		$Spike/Texture.region_rect = Rect2(0, 0, 16*length, 16)
+	else:
+		collision_array[-1].y = 0
+		attack_collision_aray[-1].y = 0
+		$Spike/CollisionPolygon2D.set_polygon(collision_array)
+		$Spike/Spike_Area/CollisionPolygon2D.set_polygon(attack_collision_aray)
+		$Spike/Texture.region_rect = Rect2(0, 0, 16*length, 16)
 	
 	

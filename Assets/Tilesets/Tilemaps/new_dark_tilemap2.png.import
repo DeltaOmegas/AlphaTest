@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0brt5ys4c42h"
-path="res://.godot/imported/Black_JumpPad.png-e4d84bf6cdf6a023325b4285836a277c.ctex"
+uid="uid://dso2721moefl2"
+path="res://.godot/imported/new_dark_tilemap2.png-c2e841efd6f22071649a6b6fcfa323ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Parts/Black_JumpPad.png"
-dest_files=["res://.godot/imported/Black_JumpPad.png-e4d84bf6cdf6a023325b4285836a277c.ctex"]
+source_file="res://Assets/Tilesets/Tilemaps/new_dark_tilemap2.png"
+dest_files=["res://.godot/imported/new_dark_tilemap2.png-c2e841efd6f22071649a6b6fcfa323ca.ctex"]
 
 [params]
 
