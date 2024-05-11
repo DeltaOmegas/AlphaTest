@@ -9,7 +9,7 @@ var tween
 
 
 func set_pause(pause_state: bool):
-	$Flashlight_Timer.visible = not pause_state
+	$Time_indicator.visible = not pause_state
 	$Health_indicator.visible = not pause_state
 	$PauseMenu.visible = pause_state
 	
