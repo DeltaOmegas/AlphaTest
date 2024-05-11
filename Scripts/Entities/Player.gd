@@ -63,12 +63,7 @@ func set_health(desired_health: int):#USE ONLY THIS FOR SETTING HEALTH, NOT _hea
 	return 0
 	
 func kill_slowly() -> void:
-	if not set_health(_health-1):
-		$Kill_timer.start()
-
-func _on_kill_timer_timeout():
-	kill_slowly()
-
+	set_health(0)
 	#TODO NEONX's health policy (c):
 	#Player start with 8hp, 0 hp - no hp, i need to add func wich heals to 10 hp instantly
 

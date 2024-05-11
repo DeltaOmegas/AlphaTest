@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://fhrk2owggphk"]
 
 [ext_resource type="Script" path="res://Scripts/base/Level_Script.gd" id="1_u1oeo"]
-[ext_resource type="PackedScene" uid="uid://3uyb4duhjone" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_3uf4w"]
+[ext_resource type="PackedScene" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_3uf4w"]
 [ext_resource type="Script" path="res://Scripts/base/White_BG.gd" id="2_h6gvm"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/base/Ellipse 1.svg" id="2_najiq"]
 [ext_resource type="Texture2D" uid="uid://c2qt44jrcuom8" path="res://Assets/base/Ellipse 2.svg" id="3_qggny"]
@@ -31,7 +31,6 @@ collision_mask = 12
 
 [node name="CollisionShape2D" parent="Switch_Color_zone2" index="0"]
 position = Vector2(14.4, -96.2)
-scale = Vector2(1, 1)
 
 [node name="Switch_Color_zone" parent="." instance=ExtResource("2_3uf4w")]
 position = Vector2(1643, 1277)
@@ -41,7 +40,6 @@ collision_mask = 12
 
 [node name="CollisionShape2D" parent="Switch_Color_zone" index="0"]
 position = Vector2(69.6, 11.2)
-scale = Vector2(1, 1)
 
 [node name="White_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true

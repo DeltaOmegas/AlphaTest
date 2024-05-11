@@ -2,7 +2,7 @@ extends Node2D
 
 @export var COLOR: bool = false
 var allow_flashlight: bool = true
-var allow_switch_color: bool = false
+var allow_switch_color: bool = true
 
 func switch_color():
 		COLOR = not(COLOR)
