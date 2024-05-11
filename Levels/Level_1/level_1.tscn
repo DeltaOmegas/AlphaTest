@@ -60,7 +60,7 @@ scale = Vector2(5, 5)
 
 [node name="Player" parent="." instance=ExtResource("9_in271")]
 z_index = 4
-position = Vector2(18512, -3456)
+position = Vector2(112, -176)
 scale = Vector2(5, 5)
 collision_layer = 8
 platform_floor_layers = 4294967043

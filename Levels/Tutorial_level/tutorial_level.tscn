@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://fhrk2owggphk"]
 
 [ext_resource type="Script" path="res://Scripts/base/Level_Script.gd" id="1_u1oeo"]
-[ext_resource type="PackedScene" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_3uf4w"]
+[ext_resource type="PackedScene" uid="uid://3uyb4duhjone" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_3uf4w"]
 [ext_resource type="Script" path="res://Scripts/base/White_BG.gd" id="2_h6gvm"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/base/Ellipse 1.svg" id="2_najiq"]
 [ext_resource type="Texture2D" uid="uid://c2qt44jrcuom8" path="res://Assets/base/Ellipse 2.svg" id="3_qggny"]
@@ -23,7 +23,7 @@ size = Vector2(11047, 164)
 [node name="Tutorial_Level" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_u1oeo")
-metadata/is_1984_level = false
+metadata/is_1984_level = true
 
 [node name="Switch_Color_zone2" parent="." instance=ExtResource("2_3uf4w")]
 position = Vector2(4006, 2214)
@@ -32,7 +32,8 @@ collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape2D" parent="Switch_Color_zone2" index="0"]
-position = Vector2(14.4, -96.2)
+position = Vector2(15, -119.6)
+scale = Vector2(1, 1)
 
 [node name="Switch_Color_zone" parent="." instance=ExtResource("2_3uf4w")]
 position = Vector2(1643, 1277)
@@ -41,10 +42,20 @@ collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape2D" parent="Switch_Color_zone" index="0"]
-position = Vector2(69.6, 11.2)
+position = Vector2(63.4, 10.2)
+scale = Vector2(1, 1)
+
+[node name="Switch_Color_zone3" parent="." instance=ExtResource("2_3uf4w")]
+position = Vector2(80, -96)
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" parent="Switch_Color_zone3" index="0"]
+position = Vector2(160, -40)
 
 [node name="White_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 texture_filter = 2
 position = Vector2(1013, -478)
@@ -55,6 +66,7 @@ script = ExtResource("2_h6gvm")
 
 [node name="Black_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 z_index = 1
 texture_filter = 2
@@ -71,7 +83,6 @@ scale = Vector2(5, 5)
 
 [node name="White" parent="." instance=ExtResource("7_ibn08")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 z_index = 4
 scale = Vector2(5, 5)
 
@@ -148,3 +159,4 @@ one_shot = true
 
 [editable path="Switch_Color_zone2"]
 [editable path="Switch_Color_zone"]
+[editable path="Switch_Color_zone3"]

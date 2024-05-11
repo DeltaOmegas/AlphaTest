@@ -28,11 +28,21 @@ func set_zoom(zoom: float):
 	#FIXME: 1.7 bg scale isn't enough for 0.5 zoom, therefore the player sees sharp transition 
 	
 func respawn(): #Used in Death_Zone to respawn player
-	position = checkpoints[-1][0]
-	velocity = Vector2(0, 0) #Fix the "portal effect"
-	set_health(8)
-	kill_slowly_in_progress = false
-	kill_slowly_immunity = 10
+	if $"..".get_current_color() != get_last_checkpoint_color(): #Current color and checkpoint must be different
+		position = checkpoints[-1][0]
+		velocity = Vector2(0, 0) #Fix the "portal effect"
+		set_health(8)
+		kill_slowly_in_progress = false
+		kill_slowly_immunity = 10
+	else:
+		$"..".switch_color()
+		position = checkpoints[-1][0]
+		velocity = Vector2(0, 0) #Fix the "portal effect"
+		set_health(8)
+		kill_slowly_in_progress = false
+		kill_slowly_immunity = 10
+		
+	
 
 func death():
 	respawn() #put death menus and animations here

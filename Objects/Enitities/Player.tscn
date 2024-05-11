@@ -149,10 +149,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4stb"]
-size = Vector2(13, 13)
+size = Vector2(14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xfnw"]
-size = Vector2(6, 4)
+size = Vector2(6, 3.875)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 16384
@@ -180,7 +180,6 @@ metadata/_aseprite_wizard_interface_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "6263ea0cfa6cc74c66e5ea685764e571"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_m4stb")
 one_way_collision_margin = 0.9
 
@@ -189,7 +188,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stuck_detector"]
-position = Vector2(3, 0)
+position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_3xfnw")
 
 [node name="Stuck_detector2" type="Area2D" parent="."]
@@ -205,7 +204,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stuck_detector3"]
-position = Vector2(0, -4)
+position = Vector2(0, -5.0625)
 shape = SubResource("RectangleShape2D_3xfnw")
 
 [node name="Stuck_detector4" type="Area2D" parent="."]

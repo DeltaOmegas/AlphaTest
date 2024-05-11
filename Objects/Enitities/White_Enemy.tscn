@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj76rwtmwysk1"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy.gd" id="1_vy7wc"]
-[ext_resource type="Texture2D" uid="uid://6sxljnfod0a" path="res://Assets/Entities/Enemy_normal_ver.png" id="2_rppmx"]
+[ext_resource type="Texture2D" uid="uid://6sxljnfod0a" path="res://Assets/Entities/Enemy_normal_ver.png" id="2_4ukhu"]
 [ext_resource type="Script" path="res://Scripts/Objects/Defeat_Zone.gd" id="3_i22q8"]
 [ext_resource type="Script" path="res://Scripts/Entities/Enemy_attack_zone.gd" id="4_11wxl"]
 
@@ -22,7 +22,7 @@ collision_mask = 17
 script = ExtResource("1_vy7wc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_rppmx")
+texture = ExtResource("2_4ukhu")
 centered = false
 offset = Vector2(0, -16)
 
