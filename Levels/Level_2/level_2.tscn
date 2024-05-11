@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://ctc5gcd52rr33"]
 
 [ext_resource type="Script" path="res://Scripts/base/Level_Script.gd" id="1_ymacc"]
-[ext_resource type="PackedScene" uid="uid://3uyb4duhjone" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_n15bg"]
+[ext_resource type="PackedScene" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_n15bg"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/base/Ellipse 1.svg" id="3_ij31r"]
 [ext_resource type="Script" path="res://Scripts/base/White_BG.gd" id="4_2txbt"]
 [ext_resource type="Texture2D" uid="uid://c2qt44jrcuom8" path="res://Assets/base/Ellipse 2.svg" id="5_3lsf8"]
@@ -131,6 +131,11 @@ libraries = {
 
 [node name="Ui" parent="." instance=ExtResource("15_lqd05")]
 unique_name_in_owner = true
+
+[node name="Kill_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true
 
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]
 

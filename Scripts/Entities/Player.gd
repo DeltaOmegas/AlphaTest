@@ -15,6 +15,8 @@ var forcepushed: Array = [0,0,false] #[reqd speed, iterator, is turned on]
 var forcejump_in_progress: int = 0 #to fix animations
 var list_of_collisions: Array
 var zoom_tween
+var kill_slowly_in_progress: bool = false
+var kill_slowly_immunity: int = 0
 
 
 func set_zoom(zoom: float):
@@ -29,9 +31,12 @@ func respawn(): #Used in Death_Zone to respawn player
 	position = checkpoints[-1][0]
 	velocity = Vector2(0, 0) #Fix the "portal effect"
 	set_health(8)
+	kill_slowly_in_progress = false
+	kill_slowly_immunity = 10
 
 func death():
 	respawn() #put death menus and animations here
+
 
 func checkpoint(data: Array): #Used in Checkpoint_Area to add new checkpoint
 	if not (data in checkpoints): #Anti-garbage protection
@@ -72,7 +77,9 @@ func set_health(desired_health: int):#USE ONLY THIS FOR SETTING HEALTH, NOT _hea
 	return 0
 	
 func kill_slowly() -> void:
-	set_health(0)
+	kill_slowly_in_progress = true
+	if not set_health(_health - 1):
+		%Kill_timer.start()
 	#TODO NEONX's health policy (c):
 	#Player start with 8hp, 0 hp - no hp, i need to add func wich heals to 10 hp instantly
 
@@ -107,6 +114,8 @@ func _process(_delta):
 		is_on_elevator.elevator_down()
 	if Input.is_action_just_pressed("up") and is_on_elevator != null:
 		is_on_elevator.elevator_up()
+	if kill_slowly_immunity:
+		kill_slowly_immunity -= 1
 
 func _physics_process(delta):
 	var last_collision = get_last_slide_collision()
@@ -125,8 +134,9 @@ func _physics_process(delta):
 		$Animation.play('Idle')
 		
 		
-	if $Stuck_detector.has_overlapping_bodies() and $Stuck_detector2.has_overlapping_bodies() and $Stuck_detector3.has_overlapping_bodies() and $Stuck_detector4.has_overlapping_bodies():
+	if $Stuck_detector.has_overlapping_bodies() and $Stuck_detector2.has_overlapping_bodies() and $Stuck_detector3.has_overlapping_bodies() and $Stuck_detector4.has_overlapping_bodies() and not kill_slowly_in_progress and not kill_slowly_immunity:
 		kill_slowly()
+		print('starting to kill')
 	
 
 	
@@ -158,3 +168,5 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+func _on_kill_timer_timeout():
+	kill_slowly()

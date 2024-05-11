@@ -115,4 +115,9 @@ libraries = {
 [node name="Ui" parent="." instance=ExtResource("15_0gkfl")]
 unique_name_in_owner = true
 
+[node name="Kill_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true
+
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]

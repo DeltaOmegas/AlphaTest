@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://fhrk2owggphk"]
 
 [ext_resource type="Script" path="res://Scripts/base/Level_Script.gd" id="1_u1oeo"]
-[ext_resource type="PackedScene" uid="uid://3uyb4duhjone" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_3uf4w"]
+[ext_resource type="PackedScene" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_3uf4w"]
 [ext_resource type="Script" path="res://Scripts/base/White_BG.gd" id="2_h6gvm"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/base/Ellipse 1.svg" id="2_najiq"]
 [ext_resource type="Texture2D" uid="uid://c2qt44jrcuom8" path="res://Assets/base/Ellipse 2.svg" id="3_qggny"]
@@ -23,7 +23,7 @@ size = Vector2(11047, 164)
 [node name="Tutorial_Level" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_u1oeo")
-metadata/is_1984_level = true
+metadata/is_1984_level = false
 
 [node name="Switch_Color_zone2" parent="." instance=ExtResource("2_3uf4w")]
 position = Vector2(4006, 2214)
@@ -48,7 +48,7 @@ unique_name_in_owner = true
 show_behind_parent = true
 texture_filter = 2
 position = Vector2(1013, -478)
-scale = Vector2(1.7, 1.7)
+scale = Vector2(10, 10)
 texture = ExtResource("2_najiq")
 region_rect = Rect2(1607.5, 755.035, 312.497, 324.965)
 script = ExtResource("2_h6gvm")
@@ -66,17 +66,18 @@ script = ExtResource("4_cxaqx")
 
 [node name="Black" parent="." instance=ExtResource("6_mpvh4")]
 unique_name_in_owner = true
-z_index = 4
+z_index = 3
 scale = Vector2(5, 5)
 
 [node name="White" parent="." instance=ExtResource("7_ibn08")]
 unique_name_in_owner = true
-z_index = 3
+modulate = Color(1, 1, 1, 0)
+z_index = 4
 scale = Vector2(5, 5)
 
 [node name="Player" parent="." instance=ExtResource("3_t0f2e")]
 z_index = 4
-position = Vector2(4662, 1356)
+position = Vector2(-1477, -130)
 scale = Vector2(5, 5)
 collision_layer = 0
 collision_mask = 0
@@ -137,7 +138,13 @@ unique_name_in_owner = true
 position = Vector2(6320, 2080)
 scale = Vector2(5, 5)
 
+[node name="Kill_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true
+
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]
+[connection signal="timeout" from="Kill_timer" to="Player" method="_on_kill_timer_timeout"]
 
 [editable path="Switch_Color_zone2"]
 [editable path="Switch_Color_zone"]
