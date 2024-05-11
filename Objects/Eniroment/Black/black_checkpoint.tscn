@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckt5lqa6ly4im"]
+[gd_scene load_steps=9 format=3 uid="uid://ckt5lqa6ly4im"]
 
+[ext_resource type="Texture2D" uid="uid://jvr4g1tcspoj" path="res://Assets/Tilesets/Tilemaps/dark_tilemap2.png" id="1_4f2qv"]
 [ext_resource type="TileSet" uid="uid://deu2p62p6yqt0" path="res://Assets/Tilesets/Dark_Tileset.tres" id="1_oc2w4"]
 [ext_resource type="Script" path="res://Scripts/Objects/Checkpint_Area.gd" id="2_bonr2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qlw4"]
-region = Rect2(35, 86, 16, 16)
+atlas = ExtResource("1_4f2qv")
+region = Rect2(34, 85, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ibve"]
 size = Vector2(48, 46)
@@ -23,7 +25,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(25, -39), Vector2(25, -42), Vector2(25, -39)]
+"values": [Vector2(24, -39), Vector2(24, -42), Vector2(24, -39)]
 }
 
 [sub_resource type="Animation" id="Animation_lboes"]
@@ -39,7 +41,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(25, -39), Vector2(25, -500)]
+"values": [Vector2(24, -39), Vector2(24, -500)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -63,7 +65,7 @@ _data = {
 [node name="Black_Checkpoint" type="Node2D"]
 
 [node name="Checkpoint_Core" type="Sprite2D" parent="."]
-position = Vector2(25, -39)
+position = Vector2(25, -500)
 texture = SubResource("AtlasTexture_7qlw4")
 
 [node name="Checkpoint_Base" type="TileMap" parent="."]

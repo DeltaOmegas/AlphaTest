@@ -31,7 +31,6 @@ collision_mask = 12
 
 [node name="CollisionShape2D" parent="Switch_Color_zone2" index="0"]
 position = Vector2(14.4, -96.2)
-scale = Vector2(1, 1)
 
 [node name="Switch_Color_zone" parent="." instance=ExtResource("2_3uf4w")]
 position = Vector2(1643, 1277)
@@ -41,10 +40,10 @@ collision_mask = 12
 
 [node name="CollisionShape2D" parent="Switch_Color_zone" index="0"]
 position = Vector2(69.6, 11.2)
-scale = Vector2(1, 1)
 
 [node name="White_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 texture_filter = 2
 position = Vector2(1013, -478)
@@ -55,6 +54,7 @@ script = ExtResource("2_h6gvm")
 
 [node name="Black_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 z_index = 1
 texture_filter = 2

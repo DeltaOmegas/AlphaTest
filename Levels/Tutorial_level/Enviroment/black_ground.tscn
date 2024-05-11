@@ -5,9 +5,6 @@
 
 [node name="Black_Ground" type="Node2D"]
 
-[node name="White_Ground" parent="." instance_placeholder="res://Levels/Tutorial_level/Enviroment/white_ground.tscn"]
-modulate = Color(1, 1, 1, 0.239216)
-
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = ExtResource("1_q830g")
 format = 2
