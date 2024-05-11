@@ -2,7 +2,7 @@ extends Node2D
 
 @export var COLOR: bool = false
 var allow_flashlight: bool = true
-var allow_switch_color: bool = true
+var allow_switch_color: bool
 
 func switch_color():
 		COLOR = not(COLOR)
@@ -19,6 +19,7 @@ func get_current_color():
 
 
 func _ready():
+	allow_switch_color = not $".".get_meta('is_1984_level')
 	COLOR = bool(COLOR)
 	if COLOR:
 		$White.modulate[3] = 0

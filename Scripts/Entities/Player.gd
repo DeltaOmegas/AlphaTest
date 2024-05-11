@@ -92,7 +92,6 @@ func set_stuck_detectors(color:int):
 	$Stuck_detector2.collision_mask = color
 	$Stuck_detector3.collision_mask = color
 	$Stuck_detector4.collision_mask = color
-	print('set_stuck_detectors', color)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("down") and is_on_elevator != null:
@@ -101,7 +100,6 @@ func _process(_delta):
 		is_on_elevator.elevator_up()
 
 func _physics_process(delta):
-	print($Stuck_detector.collision_mask)
 	var last_collision = get_last_slide_collision()
 	if not list_of_collisions.has(last_collision):
 		list_of_collisions.append(last_collision)
@@ -119,7 +117,6 @@ func _physics_process(delta):
 		
 		
 	if $Stuck_detector.has_overlapping_bodies() and $Stuck_detector2.has_overlapping_bodies() and $Stuck_detector3.has_overlapping_bodies() and $Stuck_detector4.has_overlapping_bodies():
-		print('stuck')
 		kill_slowly()
 	
 
