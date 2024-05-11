@@ -215,9 +215,3 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stuck_detector4"]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_3xfnw")
-
-[node name="Kill_timer" type="Timer" parent="."]
-wait_time = 0.25
-one_shot = true
-
-[connection signal="timeout" from="Kill_timer" to="." method="_on_kill_timer_timeout"]
