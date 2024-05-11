@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://fhrk2owggphk"]
+[gd_scene load_steps=17 format=3 uid="uid://fhrk2owggphk"]
 
 [ext_resource type="Script" path="res://Scripts/base/Level_Script.gd" id="1_u1oeo"]
+[ext_resource type="PackedScene" uid="uid://3uyb4duhjone" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_3uf4w"]
 [ext_resource type="Script" path="res://Scripts/base/White_BG.gd" id="2_h6gvm"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/base/Ellipse 1.svg" id="2_najiq"]
 [ext_resource type="Texture2D" uid="uid://c2qt44jrcuom8" path="res://Assets/base/Ellipse 2.svg" id="3_qggny"]
@@ -22,9 +23,28 @@ size = Vector2(11047, 164)
 process_mode = 3
 script = ExtResource("1_u1oeo")
 
+[node name="Switch_Color_zone2" parent="." instance=ExtResource("2_3uf4w")]
+position = Vector2(4006, 2214)
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" parent="Switch_Color_zone2" index="0"]
+position = Vector2(14.4, -96.2)
+scale = Vector2(1, 1)
+
+[node name="Switch_Color_zone" parent="." instance=ExtResource("2_3uf4w")]
+position = Vector2(1643, 1277)
+scale = Vector2(5, 5)
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" parent="Switch_Color_zone" index="0"]
+position = Vector2(69.6, 11.2)
+scale = Vector2(1, 1)
+
 [node name="White_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 show_behind_parent = true
 texture_filter = 2
 position = Vector2(1013, -478)
@@ -35,7 +55,6 @@ script = ExtResource("2_h6gvm")
 
 [node name="Black_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 show_behind_parent = true
 z_index = 1
 texture_filter = 2
@@ -95,7 +114,7 @@ collision_mask = 12
 script = ExtResource("6_gb857")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Zone"]
-position = Vector2(4820.5, 1123)
+position = Vector2(4894, 2622)
 shape = SubResource("RectangleShape2D_sguj5")
 
 [node name="Highlights" type="AnimationPlayer" parent="."]
@@ -113,3 +132,6 @@ libraries = {
 unique_name_in_owner = true
 
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]
+
+[editable path="Switch_Color_zone2"]
+[editable path="Switch_Color_zone"]

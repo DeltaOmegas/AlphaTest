@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5a0a8lokpeko" path="res://Assets/Parts/Spikes/White_Spikes.png" id="2_7sf2h"]
 [ext_resource type="Script" path="res://Scripts/Objects/Spikes/Spikes_Area.gd" id="3_svpfp"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Spikes" type="Node2D"]
 script = ExtResource("1_mowq8")
 
 [node name="Spike" type="StaticBody2D" parent="."]

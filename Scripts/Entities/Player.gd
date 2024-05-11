@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var speed: int = 300
 @export var jump_height: int = 800
-
+@export var on_start_position: bool = true
 
 
 
@@ -79,6 +79,8 @@ func _ready():
 	$Flashlight.visible = false
 	$Blackhole.visible = false
 	%Ui.update_health(_health)
+	if on_start_position:
+		position = Vector2(120, -150)
 
 
 func _process(_delta):

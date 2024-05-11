@@ -2,6 +2,7 @@ extends Node2D
 
 @export var COLOR: bool = false
 var allow_flashlight: bool = true
+var allow_switch_color: bool = false
 
 func switch_color():
 		COLOR = not(COLOR)
@@ -61,7 +62,7 @@ func _process(_delta):
 			get_tree().paused = true
 			%Ui.set_pause(true)
 			
-	if Input.is_action_just_pressed("switch_color") and not(is_anything_playing):
+	if Input.is_action_just_pressed("switch_color") and not(is_anything_playing) and allow_switch_color:
 		switch_color()
 		
 	if Input.is_action_just_pressed("highlight") and not(is_anything_playing) and allow_flashlight:
