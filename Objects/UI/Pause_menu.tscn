@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://chlq0ts8fgsp6"]
+[gd_scene load_steps=9 format=3 uid="uid://chlq0ts8fgsp6"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Pause_menu.gd" id="1_55d6j"]
 [ext_resource type="Texture2D" uid="uid://ccfd6txerirxg" path="res://Assets/UI/Buttons.png" id="1_cxnry"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_s2756"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3onyj"]
 atlas = ExtResource("1_cxnry")
@@ -21,14 +19,21 @@ region = Rect2(0, 32, 48, 16)
 atlas = ExtResource("1_cxnry")
 region = Rect2(1, 49, 46, 14)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s76c"]
+atlas = ExtResource("1_cxnry")
+region = Rect2(128, 0, 80, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_speh1"]
+atlas = ExtResource("1_cxnry")
+region = Rect2(128, 16, 80, 16)
+
 [node name="PauseMenu" type="CanvasLayer"]
 script = ExtResource("1_55d6j")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.180392, 0.180392, 0.180392, 1)
-offset_right = 1281.0
-offset_bottom = 719.0
-texture = SubResource("CanvasTexture_s2756")
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.0588235, 0.0588235, 0.105882, 1)
 
 [node name="Continue_button" type="TextureButton" parent="."]
 offset_left = 351.0
@@ -48,5 +53,15 @@ texture_normal = SubResource("AtlasTexture_67rox")
 texture_hover = SubResource("AtlasTexture_r8a3m")
 stretch_mode = 5
 
+[node name="Restart_button" type="TextureButton" parent="."]
+offset_left = 928.0
+offset_top = 624.0
+offset_right = 1248.0
+offset_bottom = 688.0
+texture_normal = SubResource("AtlasTexture_0s76c")
+texture_hover = SubResource("AtlasTexture_speh1")
+stretch_mode = 4
+
 [connection signal="pressed" from="Continue_button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Restart_button" to="." method="_on_restart_button_pressed"]

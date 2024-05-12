@@ -6,6 +6,9 @@ var tween
 #	$Flashlight_Timer.visible(true)
 #	$Health_indicator.visible(true)
 	
+func respawn_transfer():
+	%Player.respawn()
+	
 func pause_transfer():
 	$"..".pause()
 

@@ -114,10 +114,16 @@ libraries = {
 
 [node name="Ui" parent="." instance=ExtResource("15_0gkfl")]
 unique_name_in_owner = true
+flashlight_time = 3
 
 [node name="Kill_timer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.25
 one_shot = true
 
+[node name="Color_switch_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.75
+
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]
+[connection signal="timeout" from="Color_switch_timer" to="." method="_on_color_switch_timer_timeout"]

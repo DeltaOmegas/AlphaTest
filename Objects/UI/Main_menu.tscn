@@ -31,22 +31,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_copbu")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1281.0
+offset_bottom = 718.0
+color = Color(0.0588235, 0.0588235, 0.105882, 1)
+
 [node name="Play_button" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 441.0
-offset_top = 334.0
-offset_right = 827.0
-offset_bottom = 466.0
+offset_left = 417.0
+offset_top = 278.0
+offset_right = 803.0
+offset_bottom = 410.0
 texture_normal = SubResource("AtlasTexture_rxnkf")
 texture_hover = SubResource("AtlasTexture_crqo5")
 stretch_mode = 5
 
 [node name="Tutorial_button" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 39.0
-offset_top = 623.0
-offset_right = 384.0
-offset_bottom = 692.0
+offset_left = 441.0
+offset_top = 438.0
+offset_right = 786.0
+offset_bottom = 507.0
 texture_normal = SubResource("AtlasTexture_i2owb")
 texture_hover = SubResource("AtlasTexture_luye7")
 stretch_mode = 5
