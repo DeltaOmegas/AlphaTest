@@ -58,17 +58,19 @@ func _ready():
 		else:
 			node.set_process_mode(PROCESS_MODE_PAUSABLE)
 
+func pause():
+	if get_tree().paused:
+		get_tree().paused = false
+		%Ui.set_pause(false)
+	else:
+		get_tree().paused = true
+		%Ui.set_pause(true)
+
 func _process(_delta):
 	var is_anything_playing: bool = $Highlights.is_playing() or $Colors.is_playing()
 	
 	if Input.is_action_just_pressed('pause'):
-		if get_tree().paused:
-			get_tree().paused = false
-			%Ui.set_pause(false)
-		else:
-			get_tree().paused = true
-			%Ui.set_pause(true)
-			
+		pause()
 	if Input.is_action_just_pressed("switch_color") and not(is_anything_playing) and allow_switch_color:
 		switch_color()
 		

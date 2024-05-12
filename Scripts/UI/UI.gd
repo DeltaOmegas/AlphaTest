@@ -6,7 +6,8 @@ var tween
 #	$Flashlight_Timer.visible(true)
 #	$Health_indicator.visible(true)
 	
-
+func pause_transfer():
+	$"..".pause()
 
 func set_pause(pause_state: bool):
 	$Time_indicator.visible = not pause_state

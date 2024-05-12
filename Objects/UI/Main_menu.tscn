@@ -1,32 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjh2svxteedf"]
+[gd_scene load_steps=7 format=3 uid="uid://cjh2svxteedf"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main menu.gd" id="1_copbu"]
+[ext_resource type="Texture2D" uid="uid://ccfd6txerirxg" path="res://Assets/UI/Buttons.png" id="2_hdopg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxnkf"]
+atlas = ExtResource("2_hdopg")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crqo5"]
+atlas = ExtResource("2_hdopg")
+region = Rect2(1, 17, 46, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2owb"]
+atlas = ExtResource("2_hdopg")
+region = Rect2(48, 32, 79, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luye7"]
+atlas = ExtResource("2_hdopg")
+region = Rect2(49, 49, 78, 14)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
 offset_top = 2.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_copbu")
 
-[node name="Button2" type="Button" parent="."]
+[node name="Play_button" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 639.0
-offset_right = 151.0
-offset_bottom = 690.0
-text = "test level"
+offset_left = 441.0
+offset_top = 334.0
+offset_right = 827.0
+offset_bottom = 466.0
+texture_normal = SubResource("AtlasTexture_rxnkf")
+texture_hover = SubResource("AtlasTexture_crqo5")
+stretch_mode = 5
 
-[node name="Button" type="Button" parent="."]
+[node name="Tutorial_button" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 430.0
-offset_top = 361.0
-offset_right = 826.0
-offset_bottom = 429.0
-text = "Play"
+offset_left = 39.0
+offset_top = 623.0
+offset_right = 384.0
+offset_bottom = 692.0
+texture_normal = SubResource("AtlasTexture_i2owb")
+texture_hover = SubResource("AtlasTexture_luye7")
+stretch_mode = 5
 
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Tutorial_button" to="." method="_on_tutorial_button_pressed"]
