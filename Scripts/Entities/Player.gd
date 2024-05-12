@@ -25,7 +25,6 @@ func set_zoom(zoom: float):
 		zoom_tween = null
 	zoom_tween = %Main_Camera.create_tween()
 	zoom_tween.tween_property(%Main_Camera, "zoom", Vector2(zoom, zoom), 0.5)
-	#FIXME: 1.7 bg scale isn't enough for 0.5 zoom, therefore the player sees sharp transition 
 	
 func respawn(): #Used in Death_Zone to respawn player
 	if $"..".get_current_color() != get_last_checkpoint_color(): #Current color and checkpoint must be different

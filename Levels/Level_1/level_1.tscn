@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2bfwb5vwgecq"]
+[gd_scene load_steps=15 format=3 uid="uid://d2bfwb5vwgecq"]
 
 [ext_resource type="Script" path="res://Scripts/base/Level_Script.gd" id="1_b0o7v"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/base/Ellipse 1.svg" id="3_gal4u"]
@@ -15,9 +15,6 @@
 [ext_resource type="AnimationLibrary" uid="uid://cto0ulikt5j1y" path="res://Assets/Animations/Colors_Animation.res" id="14_0db2r"]
 [ext_resource type="PackedScene" uid="uid://cag1mrccxn3dr" path="res://Objects/UI/UI.tscn" id="15_0gkfl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sguj5"]
-size = Vector2(11047, 164)
-
 [node name="Level_1" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_b0o7v")
@@ -26,41 +23,41 @@ metadata/is_1984_level = false
 [node name="White_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 show_behind_parent = true
-z_index = 1
 texture_filter = 2
 position = Vector2(1013, -478)
-scale = Vector2(1.69998, 1.69998)
+scale = Vector2(10, 10)
 texture = ExtResource("3_gal4u")
 region_rect = Rect2(1607.5, 755.035, 312.497, 324.965)
 script = ExtResource("4_kgw4p")
 
 [node name="Black_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 show_behind_parent = true
+z_index = 1
 texture_filter = 2
 position = Vector2(1013, -478)
-scale = Vector2(10, 10)
+scale = Vector2(0.01, 0.01)
 texture = ExtResource("5_yeegy")
 region_rect = Rect2(1607.5, 755.035, 312.497, 324.965)
 script = ExtResource("6_xlkib")
 
 [node name="Black" parent="." instance=ExtResource("6_oad5n")]
 unique_name_in_owner = true
-z_index = 4
+z_index = 3
 position = Vector2(-86.25, -39.75)
 scale = Vector2(5, 5)
 
 [node name="White" parent="." instance=ExtResource("7_f5lbh")]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
-z_index = 3
+z_index = 4
 position = Vector2(-86.25, -39.75)
 scale = Vector2(5, 5)
 
 [node name="Player" parent="." instance=ExtResource("9_in271")]
+unique_name_in_owner = true
 z_index = 4
-position = Vector2(112, -176)
+position = Vector2(8352, -3408)
 scale = Vector2(5, 5)
 collision_layer = 8
 platform_floor_layers = 4294967043
@@ -81,6 +78,7 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 
 [node name="Flashlight" type="Sprite2D" parent="Player"]
+visible = false
 z_index = 2
 z_as_relative = false
 scale = Vector2(0.2, 0.2)
@@ -89,17 +87,17 @@ texture = ExtResource("10_b7fng")
 [node name="Blackhole" type="Sprite2D" parent="Player"]
 z_index = 2
 z_as_relative = false
-scale = Vector2(0.199998, 0.199998)
+scale = Vector2(0.01, 0.01)
 texture = ExtResource("11_6j8n0")
 
 [node name="Death_Zone" type="Area2D" parent="."]
+position = Vector2(5440, 416)
 collision_layer = 0
 collision_mask = 12
 script = ExtResource("12_pmsnu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Zone"]
-position = Vector2(4894, 2622)
-shape = SubResource("RectangleShape2D_sguj5")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Death_Zone"]
+polygon = PackedVector2Array(-6336, -160, -6336, -32, -2752, -32, -2752, -544, 448, -544, 448, -1952, 2048, -2864, 14016, -2848, 14016, -2720, 13888, -2720, 13888, -800, 14816, -800, 14816, -2720, 14688, -2720, 14688, -2848, 16576, -2848, 16576, -2976, 14560, -2976, 14560, -2592, 14688, -2592, 14688, -928, 14016, -928, 14016, -2592, 14144, -2592, 14144, -2976, 1984, -2976, 320, -2000, 320, -672, -2880, -672, -2880, -160)
 
 [node name="Highlights" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Player")
@@ -108,6 +106,8 @@ libraries = {
 }
 
 [node name="Colors" type="AnimationPlayer" parent="."]
+process_mode = 4
+active = false
 libraries = {
 "": ExtResource("14_0db2r")
 }

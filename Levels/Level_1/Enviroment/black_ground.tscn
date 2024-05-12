@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0h7no4rawihe"]
+[gd_scene load_steps=6 format=3 uid="uid://d0h7no4rawihe"]
 
 [ext_resource type="TileSet" uid="uid://deu2p62p6yqt0" path="res://Assets/Tilesets/Dark_Tileset.tres" id="2_4ctwa"]
 [ext_resource type="PackedScene" uid="uid://b4q1wnv640pd1" path="res://Objects/Eniroment/Black/black_spikes.tscn" id="2_gend3"]
 [ext_resource type="PackedScene" uid="uid://bqamqdr5f24ns" path="res://Objects/Eniroment/Black/black_chain.tscn" id="3_ftydk"]
 [ext_resource type="PackedScene" uid="uid://cayc43rifv4d8" path="res://Objects/Eniroment/Black/black_elevator.tscn" id="4_siqkm"]
+[ext_resource type="PackedScene" uid="uid://ckt5lqa6ly4im" path="res://Objects/Eniroment/Black/black_checkpoint.tscn" id="5_bqp5d"]
 
 [node name="Black_Ground" type="Node2D"]
 
@@ -36,3 +37,6 @@ position = Vector2(3808, -752)
 
 [node name="Node2D4" parent="." instance=ExtResource("2_gend3")]
 position = Vector2(4080, -832)
+
+[node name="Black_Checkpoint" parent="." instance=ExtResource("5_bqp5d")]
+position = Vector2(1808, -784)
