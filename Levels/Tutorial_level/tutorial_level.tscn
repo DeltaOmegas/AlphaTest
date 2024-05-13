@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://fhrk2owggphk"]
+[gd_scene load_steps=16 format=3 uid="uid://fhrk2owggphk"]
 
 [ext_resource type="Script" path="res://Scripts/base/Level_Script.gd" id="1_u1oeo"]
 [ext_resource type="PackedScene" uid="uid://3uyb4duhjone" path="res://Objects/Eniroment/switch_color_zone.tscn" id="2_3uf4w"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cg6xlt2rk6vbe" path="res://Levels/Tutorial_level/Enviroment/white_ground.tscn" id="7_ibn08"]
 [ext_resource type="Texture2D" uid="uid://ch81x5h5pkws7" path="res://Assets/base/Flashlight.svg" id="9_ibfnn"]
 [ext_resource type="Texture2D" uid="uid://dvntyf61tvsb3" path="res://Assets/base/Blackhole.svg" id="10_tvbti"]
-[ext_resource type="AnimationLibrary" uid="uid://crwyyp0x1y5qv" path="res://Assets/Animations/Highlight_Animations.res" id="12_gl3yu"]
 [ext_resource type="PackedScene" uid="uid://cag1mrccxn3dr" path="res://Objects/UI/UI.tscn" id="14_angvh"]
 [ext_resource type="PackedScene" uid="uid://b7fiwo7jektv7" path="res://Objects/Eniroment/level_switcher.tscn" id="16_qpllf"]
 
@@ -78,7 +77,6 @@ scale = Vector2(5, 5)
 
 [node name="White" parent="." instance=ExtResource("7_ibn08")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 z_index = 4
 scale = Vector2(5, 5)
 
@@ -127,29 +125,24 @@ script = ExtResource("6_gb857")
 position = Vector2(3040, 2622)
 shape = SubResource("RectangleShape2D_sguj5")
 
-[node name="Highlights" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Player")
-libraries = {
-"": ExtResource("12_gl3yu")
-}
-
 [node name="Ui" parent="." instance=ExtResource("14_angvh")]
 unique_name_in_owner = true
 
 [node name="Level_Switcher" parent="." instance=ExtResource("16_qpllf")]
 position = Vector2(6320, 2080)
 scale = Vector2(5, 5)
+switch_to = "res://Objects/UI/Main_menu.tscn"
+
+[node name="Color_switch_timer" type="Timer" parent="."]
+unique_name_in_owner = true
 
 [node name="Kill_timer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.25
 one_shot = true
 
-[node name="Highlight" type="Node2D" parent="."]
-
-[node name="Switch_Color" type="Node2D" parent="."]
-
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]
+[connection signal="timeout" from="Color_switch_timer" to="." method="_on_color_switch_timer_timeout"]
 [connection signal="timeout" from="Kill_timer" to="Player" method="_on_kill_timer_timeout"]
 
 [editable path="Switch_Color_zone2"]

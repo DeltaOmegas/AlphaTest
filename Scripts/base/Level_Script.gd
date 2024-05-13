@@ -206,6 +206,7 @@ func pause():
 		%Ui.set_pause(true)
 
 func _process(_delta):
+	print(allow_switch_color)
 	if Input.is_action_just_pressed('pause'):
 		pause()
 	if Input.is_action_just_pressed("switch_color") and allow_switch_color == [true, true]:

@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg1f0ukmwpvld"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Endgame_menu.gd" id="1_poyiw"]
+[ext_resource type="Texture2D" uid="uid://ccfd6txerirxg" path="res://Assets/UI/Buttons.png" id="2_10kow"]
+[ext_resource type="Texture2D" uid="uid://ud22upeexp1y" path="res://Assets/To_Be_Cont.png" id="3_bi70f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6g6k"]
+atlas = ExtResource("2_10kow")
+region = Rect2(128, 32, 79, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a88xb"]
+atlas = ExtResource("2_10kow")
+region = Rect2(128, 48, 79, 16)
+
+[node name="Endgame_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_poyiw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.0588235, 0.0588235, 0.105882, 1)
+
+[node name="Main_menu_button" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 304.0
+offset_top = 480.0
+offset_right = -304.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_j6g6k")
+texture_hover = SubResource("AtlasTexture_a88xb")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 96.0
+offset_right = 1045.0
+offset_bottom = 336.0
+texture = ExtResource("3_bi70f")
+stretch_mode = 4
+
+[connection signal="pressed" from="Main_menu_button" to="." method="_on_main_menu_button_pressed"]

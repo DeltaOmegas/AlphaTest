@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2bfwb5vwgecq"]
+[gd_scene load_steps=17 format=3 uid="uid://d2bfwb5vwgecq"]
 
 [ext_resource type="Script" path="res://Scripts/base/Level_Script.gd" id="1_b0o7v"]
 [ext_resource type="Texture2D" uid="uid://c0a6flng7t54o" path="res://Assets/base/Ellipse 1.svg" id="3_gal4u"]
@@ -14,6 +14,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://crwyyp0x1y5qv" path="res://Assets/Animations/Highlight_Animations.res" id="13_jor24"]
 [ext_resource type="AnimationLibrary" uid="uid://cto0ulikt5j1y" path="res://Assets/Animations/Colors_Animation.res" id="14_0db2r"]
 [ext_resource type="PackedScene" uid="uid://cag1mrccxn3dr" path="res://Objects/UI/UI.tscn" id="15_0gkfl"]
+[ext_resource type="PackedScene" uid="uid://cx3dqxvbp4diw" path="res://Objects/Eniroment/zoom_zone.tscn" id="15_7jojy"]
+[ext_resource type="PackedScene" uid="uid://b7fiwo7jektv7" path="res://Objects/Eniroment/level_switcher.tscn" id="15_60bj1"]
 
 [node name="Level_1" type="Node2D"]
 process_mode = 3
@@ -22,6 +24,7 @@ metadata/is_1984_level = false
 
 [node name="White_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 texture_filter = 2
 position = Vector2(1013, -478)
@@ -32,6 +35,7 @@ script = ExtResource("4_kgw4p")
 
 [node name="Black_BG" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 show_behind_parent = true
 z_index = 1
 texture_filter = 2
@@ -49,7 +53,6 @@ scale = Vector2(5, 5)
 
 [node name="White" parent="." instance=ExtResource("7_f5lbh")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 z_index = 4
 position = Vector2(-86.25, -39.75)
 scale = Vector2(5, 5)
@@ -57,7 +60,7 @@ scale = Vector2(5, 5)
 [node name="Player" parent="." instance=ExtResource("9_in271")]
 unique_name_in_owner = true
 z_index = 4
-position = Vector2(8352, -3408)
+position = Vector2(112, -192)
 scale = Vector2(5, 5)
 collision_layer = 8
 platform_floor_layers = 4294967043
@@ -125,5 +128,28 @@ one_shot = true
 unique_name_in_owner = true
 wait_time = 0.75
 
+[node name="Level_Switcher" parent="." instance=ExtResource("15_60bj1")]
+position = Vector2(19680, -672)
+scale = Vector2(5, 5)
+switch_to = "res://Objects/UI/endgame_menu.tscn"
+
+[node name="Zoom_Zone" parent="." instance=ExtResource("15_7jojy")]
+position = Vector2(4080, -1152)
+zoom = 0.5
+
+[node name="CollisionPolygon2D" parent="Zoom_Zone/Area2D" index="0"]
+position = Vector2(-828.8, 227.2)
+polygon = PackedVector2Array(793.6, -227.2, 793.6, -768, 1728, -780.8, 1728, -521.6, 1564.8, -521.6, 889.6, -476.8, 889.6, -227.2)
+
+[node name="Zoom_Zone3" parent="." instance=ExtResource("15_7jojy")]
+position = Vector2(11056, -3168)
+zoom = 0.5
+
+[node name="CollisionPolygon2D" parent="Zoom_Zone3/Area2D" index="0"]
+polygon = PackedVector2Array(-169.6, 44.8, -169.6, -313.6, 656, -313.6, 656, 44.8)
+
 [connection signal="body_entered" from="Death_Zone" to="Death_Zone" method="_on_body_entered"]
 [connection signal="timeout" from="Color_switch_timer" to="." method="_on_color_switch_timer_timeout"]
+
+[editable path="Zoom_Zone"]
+[editable path="Zoom_Zone3"]
